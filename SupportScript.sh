@@ -13,7 +13,7 @@ Support Script version-1.0 - created by Gilad Bronshtein
 "
 
 ############## METHODS ##############
-moveOnMessage()
+function moveOnMessage()
 {
 	echo -e ""
 	echo -e "\e[45mDONE Moving on..\e[0m"
