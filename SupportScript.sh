@@ -132,7 +132,7 @@ echo sudo grep | dmidecode | grep -A3 '^System Information'
 echo -e ""
 
 echo -e "\e[44m>>>> Disks <<<<\e[0m"
-echo sudo grep | lsblk -o SIZE,TYPE,KNAME #DISK SPACE TEST
+echo sudo grep | lsblk -o SIZE,TYPE,KNAME | grep disk
 echo -e ""
 
 echo -e "\e[44m>>>> Release <<<<\e[0m"
