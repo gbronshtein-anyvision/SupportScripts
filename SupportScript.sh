@@ -55,7 +55,7 @@ echo "==                 Download & Install Chrome & TV                    =="
 echo "======================================================================="
 cd /home/user/Downloads/
 
-google()
+function google()
 {
 if [ ! -f /home/user/Downloads/google-chrome-stable_current_amd64.deb ]; then
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && sudo apt install ./google-chrome-stable_current_amd64.deb -y 
@@ -63,7 +63,7 @@ fi
 }
 
 
-teamviewer()
+function teamviewer()
 {
 if [ ! -f /home/user/Downloads/teamviewer_amd64.deb ]; then
     wget https://download.teamviewer.com/download/linux/teamviewer_amd64.deb && sudo apt install ./teamviewer_amd64.deb -y
@@ -133,6 +133,11 @@ echo -e ""
 echo -e "\e[44m>>>> Release <<<<\e[0m"
 echo sudo grep | lsb_release -a
 echo -e ""
+
+echo -e "\e[44m>>>> Storage <<<<\e[0m"
+echo sudo grep | mount | grep storage
+echo -e ""
+
 
 moveOnMessage
 
