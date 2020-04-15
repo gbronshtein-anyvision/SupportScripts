@@ -26,8 +26,8 @@ echo "==                        apt-get update                             =="
 echo "======================================================================="
 
 apt-get update
-moveOnMessage
 
+moveOnMessage
 
 
 echo "======================================================================="
@@ -37,18 +37,23 @@ echo "======================================================================="
 
 
 echo -e "\e[93m>>>>> Installing SSH SERVER <<<<<\e[0m"
+echo -e ""
 sudo apt-get install openssh-server -y
 echo -e ""
 echo -e "\e[93m>>>>> Installing HTOP <<<<<\e[0m"
+echo -e ""
 sudo apt install htop -y
 echo -e ""
 echo -e "\e[93m>>>>> Installing VIM <<<<<\e[0m"
+echo -e ""
 sudo apt install vim -y
 echo -e ""
 echo -e "\e[93m>>>>> Installing CURL <<<<<\e[0m"
+echo -e ""
 sudo apt install curl -y
 echo -e ""
 echo -e "\e[93m>>>>> dpkg configure -a <<<<<\e[0m"
+echo -e ""
 sudo dpkg --configure -a
 
 moveOnMessage
@@ -138,9 +143,7 @@ echo -e "\e[44m>>>> Storage <<<<\e[0m"
 echo sudo grep | mount | grep storage
 echo -e ""
 
-
 moveOnMessage
-
 
 echo "======================================================================="
 echo "==             Creating a steps file for Mailer Deploying            =="
@@ -195,6 +198,30 @@ echo "1. Open Terminal (CTRL+ALT+T)
 	consul kv put backend/misc_image_allowed_rotation true 
 	consul kv put api-gateway/EXTERNAL_SUPPORTED_VERSIONS 1.6
 	consul kv put api-gateway/JWT_EXPIRY_DURATION 604800
+
+4.Exit -> Type exit
+
+	" > ${b}
+
+moveOnMessage
+
+echo "======================================================================="
+echo "==             Creating a steps file for webRTC Fixing               =="
+echo "======================================================================="
+
+cd /home/user/Desktop
+b="webRTC.txt"
+touch $b
+echo "1. Open Terminal (CTRL+ALT+T)
+
+2. Run following Command (Enter consul pod)
+   kubectl exec -it consul-server-0 sh
+
+3.Run following commands
+	consul kv put webrtc-streamer/WEBRTC_HOST [BT_SERVER_IP]
+	consul kv put webrtc-streamer/APIGATEWAY_IP [BT_SERVER_IP]
+	consul kv put webrtc-streamer/HOST_IP [BT_SERVER_IP]
+
 
 4.Exit -> Type exit
 
