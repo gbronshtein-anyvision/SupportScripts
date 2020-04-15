@@ -38,12 +38,16 @@ echo "======================================================================="
 
 echo -e "\e[93m>>>>> Installing SSH SERVER <<<<<\e[0m"
 sudo apt-get install openssh-server -y
+echo -e ""
 echo -e "\e[93m>>>>> Installing HTOP <<<<<\e[0m"
 sudo apt install htop -y
+echo -e ""
 echo -e "\e[93m>>>>> Installing VIM <<<<<\e[0m"
 sudo apt install vim -y
+echo -e ""
 echo -e "\e[93m>>>>> Installing CURL <<<<<\e[0m"
 sudo apt install curl -y
+echo -e ""
 echo -e "\e[93m>>>>> dpkg configure -a <<<<<\e[0m"
 sudo dpkg --configure -a
 
