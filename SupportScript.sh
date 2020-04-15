@@ -122,10 +122,6 @@ echo -e "\e[44m>>>> System <<<\e[0m"
 echo sudo grep | dmidecode | grep -A3 '^System Information'
 echo -e ""
 
-echo -e "\e[44m>>>>> RAM <<<<<\e[0m"
-free | grep -m1 'Mem'
-echo -e ""
-
 echo -e "\e[44m>>>> Disks <<<<\e[0m"
 echo sudo grep | lsblk -o SIZE,TYPE,KNAME #DISK SPACE TEST
 echo -e ""
