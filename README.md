@@ -1,6 +1,7 @@
 # Support Script
 
 **This script should be used on INTERNAL DEMO systems only!
+[WIKI Page](https://anyvision.atlassian.net/wiki/spaces/SUPPORT/pages/1604159099/Support+Script+-+INTERNAL+ONLY)
 
 ## Getting Started
 
@@ -9,7 +10,7 @@ Support Script includes the following features:
 * Installing SSH Server / htop / vim / curl / dpkg
 * Download & Install Chrome & TV
 * Installing Open VPN + vpn alias (.bashrc)
-* System Information
+* System Information: 
 ** CPU
 ** RAM 
 ** GPU
