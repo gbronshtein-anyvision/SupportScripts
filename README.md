@@ -3,6 +3,14 @@
 This script should be used on INTERNAL DEMO systems only!
 [WIKI Page](https://anyvision.atlassian.net/wiki/spaces/SUPPORT/pages/1604159099/Support+Script+-+INTERNAL+ONLY)
 
+### How to use
+
+Copy following line and use it with root permissions:
+
+```
+wget -qO- https://git.io/JfvAs | bash -s -- -a
+```
+
 ## Getting Started
 
 Support Script includes the following features:
@@ -14,14 +22,6 @@ Support Script includes the following features:
 * Easy mailer instructions txt creation 
 * Easy BTR instructions txt creation
 * Easy webRTC instructions txt creation
-
-### How to use
-
-Copy following line and use it with root permissions:
-
-```
-wget -qO- https://git.io/JfvAs | bash -s -- -a
-```
 
 ## Versioning
 
