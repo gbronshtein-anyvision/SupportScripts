@@ -1,17 +1,20 @@
-# Project Title
+# Support Script
 
-One Paragraph of project description goes here
+This script should be used on INTERNAL DEMO systems only!
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Support Script includes the following features:
 
-### Prerequisites
 
-What things you need to install the software and how to install them
+### How to use
+
+Copy following line and use it with root permissions
 
 ```
-Give examples
+ wget -qO- https://raw.githubusercontent.com/gbronshtein-anyvision/SupportScripts/master/SupportScript.sh | bash -s -- -a
+
+
 ```
 
 ### Installing
