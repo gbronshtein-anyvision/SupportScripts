@@ -10,18 +10,10 @@ Support Script includes the following features:
 * Installing SSH Server / htop / vim / curl / dpkg
 * Download & Install Chrome & TV
 * Installing Open VPN + vpn alias (.bashrc)
-* System Information: 
-** CPU
-** RAM 
-** GPU
-** System 
-** Disks
-** Ubuntu Version
-** Storage 
+* System Information: CPU, RAM, GPU, System, Disks, Ubuntu Version, Storage 
 * Easy mailer instructions txt creation 
 * Easy BTR instructions txt creation
 * Easy webRTC instructions txt creation
-
 
 ### How to use
 
@@ -31,11 +23,10 @@ Copy following line and use it with root permissions:
 wget -qO- https://raw.githubusercontent.com/gbronshtein-anyvision/SupportScripts/master/SupportScript.sh | bash -s -- -a
 ```
 
-
 ## Versioning
 
 * Version 1.0 - April 12 2020
 
 ## Authors
 
-* **Gilad Bronshtein** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Gilad Bronshtein** - *Initial work* - [Gilad Bronshtein](https://github.com/gbronshtein-anyvision)
