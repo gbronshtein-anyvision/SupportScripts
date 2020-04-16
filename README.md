@@ -1,6 +1,6 @@
 # Support Script
 
-**This script should be used on INTERNAL DEMO systems only!
+This script should be used on INTERNAL DEMO systems only!
 [WIKI Page](https://anyvision.atlassian.net/wiki/spaces/SUPPORT/pages/1604159099/Support+Script+-+INTERNAL+ONLY)
 
 ## Getting Started
@@ -29,14 +29,8 @@ Copy following line and use it with root permissions
 
 ```
  wget -qO- https://raw.githubusercontent.com/gbronshtein-anyvision/SupportScripts/master/SupportScript.sh | bash -s -- -a
-
 ```
 
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
 ## Contributing
 
@@ -52,12 +46,4 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
-## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
