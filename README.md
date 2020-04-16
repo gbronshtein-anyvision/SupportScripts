@@ -20,7 +20,7 @@ Support Script includes the following features:
 Copy following line and use it with root permissions:
 
 ```
-wget -qO- https://raw.githubusercontent.com/gbronshtein-anyvision/SupportScripts/master/SupportScript.sh | bash -s -- -a
+wget -qO- https://git.io/JfvAs | bash -s -- -a
 ```
 
 ## Versioning
