@@ -13,13 +13,13 @@ Support Script version-1.0 - created by Gilad Bronshtein
 "
 
 ############## METHODS ##############
+
 function moveOnMessage()
 {
 	echo -e ""
 	echo -e "\e[45mDONE Moving on..\e[0m"
 	echo -e ""
 }
-
 
 echo "======================================================================="
 echo "==                        apt-get update                             =="
@@ -141,6 +141,11 @@ echo -e ""
 
 echo -e "\e[44m>>>> Storage <<<<\e[0m"
 echo sudo grep | mount | grep storage
+echo -e ""
+
+echo -e "\e[44m>>>> Storage Space <<<<\e[0m"
+echo sudo grep | df -T -h /
+echo sudo grep | df -T -h /storage
 echo -e ""
 
 moveOnMessage
