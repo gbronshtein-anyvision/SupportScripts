@@ -18,7 +18,8 @@ Support Script includes the following features:
 * Installing SSH Server / htop / vim / curl / dpkg
 * Download & Install Chrome & TV
 * Installing Open VPN + vpn alias (.bashrc)
-* System Information: CPU, RAM, GPU, System, Disks, Ubuntu Version, Storage 
+* System Information: 
+** CPU, RAM, GPU, System, Disks, Ubuntu Version, Storage, Disks Space
 * Easy mailer instructions txt creation 
 * Easy BTR instructions txt creation
 * Easy webRTC instructions txt creation
