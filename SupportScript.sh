@@ -38,7 +38,7 @@ echo "======================================================================="
 
 echo -e "\e[93m>>>>> Installing SSH SERVER <<<<<\e[0m"
 echo -e ""
-sudo apt-get install openssh-server -y
+sudo apt-get install ssh -y
 echo -e ""
 echo -e "\e[93m>>>>> Installing HTOP <<<<<\e[0m"
 echo -e ""
@@ -155,8 +155,8 @@ echo "==             Creating a steps file for Mailer Deploying            =="
 echo "======================================================================="
 
 cd /home/user/Desktop
-a="mailer.txt"
-touch $a
+txtMailer="mailer.txt"
+touch $txtMailer
 echo "1. Open Terminal (CTRL+ALT+T)
 
 2. Run following Command (Enter consul pod)
@@ -180,7 +180,7 @@ Use followig site to choose your time zone: http://manpages.ubuntu.com/manpages/
 
 5.Exit -> Type exit
 
-	" > ${a}
+	" > ${txtMailer}
 
 moveOnMessage
 
@@ -189,8 +189,8 @@ echo "==             Creating a steps file for BTR Deploying               =="
 echo "======================================================================="
 
 cd /home/user/Desktop
-b="BTR.txt"
-touch $b
+txtBTR="BTR.txt"
+touch $txtBTR
 echo "1. Open Terminal (CTRL+ALT+T)
 
 2. Run following Command (Enter consul pod)
@@ -206,7 +206,7 @@ echo "1. Open Terminal (CTRL+ALT+T)
 
 4.Exit -> Type exit
 
-	" > ${b}
+	" > ${txtBTR}
 
 moveOnMessage
 
@@ -215,8 +215,8 @@ echo "==             Creating a steps file for webRTC Fixing               =="
 echo "======================================================================="
 
 cd /home/user/Desktop
-b="webRTC.txt"
-touch $b
+txtWebRTC="webRTC.txt"
+touch $txtWebRTC
 echo "1. Open Terminal (CTRL+ALT+T)
 
 2. Run following Command (Enter consul pod)
@@ -230,10 +230,59 @@ echo "1. Open Terminal (CTRL+ALT+T)
 
 4.Exit -> Type exit
 
-	" > ${b}
+	" > ${txtWebRTC}
 
 moveOnMessage
+
+
+
+echo "======================================================================="
+echo "==                               FLAGS                               =="
+echo "======================================================================="
+
+while [ ! $# -eq 0 ]
+do
+	case "$1" in
+		--help | -h)
+			help
+			exit
+			;;
+		--clean | -c)
+			secretopt
+			exit
+			;;
+		--install | -i)
+			secretopt
+			exit
+			;;
+		--dashboard | -d)
+			secretopt
+			exit
+			;;
+	esac
+	shift
+done
+
+
+
+
 
 echo "======================================================================="
 echo -e "==                             \e[5mEnd of Script\e[0m                         =="
 echo "======================================================================="
+
+
+function .help()
+{
+cat << EOF
+usage: $0 PARAM [-c|--clean] [-i|--install] [-d|--dashboard] [-h|--help]
+Support Script version-1.0 - created by Gilad Bronshtein
+
+OPTIONS:
+   PARAM        	The param
+   -c|--clean  		clean.sh 1.24.2-6
+   -i|--install    	install.sh 1.24.2-6 with gravity installation & advertised IP 
+   -d|--dashbaord   dashboard download - 1.24.2
+   -h|--help    	help menu
+EOF
+}
