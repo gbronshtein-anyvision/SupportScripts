@@ -23,6 +23,7 @@ Support Script includes the following features:
 * Easy mailer instructions txt creation 
 * Easy BTR instructions txt creation
 * Easy webRTC instructions txt creation
+* # WIP - clean.sh | install.sh | dashboard download | flags structure 
 
 ### Versioning
 
