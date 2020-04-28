@@ -12,7 +12,58 @@ echo "
 Support Script version-1.0 - created by Gilad Bronshtein 
 "
 
-############## METHODS ##############
+
+##############################################################################
+echo "======================================================================="
+echo "==                               FLAGS                               =="
+echo "======================================================================="
+##############################################################################
+
+while [ ! $# -eq 0 ]
+do
+	case "$1" in
+		--help | -h)
+			help
+			exit
+			;;
+		--clean | -c)
+			secretopt
+			exit
+			;;
+		--install | -i)
+			secretopt
+			exit
+			;;
+		--dashboard | -d)
+			secretopt
+			exit
+			;;
+	esac
+	shift
+done
+
+
+
+
+function .help()
+{
+cat << EOF
+usage: $0 PARAM [-c|--clean] [-i|--install] [-d|--dashboard] [-h|--help]
+Support Script version-1.0 - created by Gilad Bronshtein
+
+OPTIONS:
+   PARAM        	The param
+   -c|--clean  		clean.sh 1.24.2-6
+   -i|--install    	install.sh 1.24.2-6 with gravity installation & advertised IP 
+   -d|--dashbaord   dashboard download - 1.24.2
+   -h|--help    	help menu
+EOF
+}
+
+
+#############################################################################################
+########################################## METHODS ##########################################
+#############################################################################################
 
 function moveOnMessage()
 {
@@ -21,21 +72,15 @@ function moveOnMessage()
 	echo -e ""
 }
 
+function appsInstall()
+{
 echo "======================================================================="
-echo "==                        apt-get update                             =="
-echo "======================================================================="
-
-apt-get update
-
-moveOnMessage
-
-
-echo "======================================================================="
-echo "==        Installing SSH Server / htop / vim / curl / dpkg           =="
+echo "==         Updates / SSH Server / htop / vim / curl / Aria2          =="
 echo "======================================================================="
 
-
-
+echo -e "\e[93m>>>>> Installing Updates <<<<<\e[0m"
+echo -e ""
+sudo apt-get update
 echo -e "\e[93m>>>>> Installing SSH SERVER <<<<<\e[0m"
 echo -e ""
 sudo apt-get install ssh -y
@@ -52,41 +97,50 @@ echo -e "\e[93m>>>>> Installing CURL <<<<<\e[0m"
 echo -e ""
 sudo apt install curl -y
 echo -e ""
+echo -e "\e[93m>>>>> Installaing Aria2 <<<<<\e[0m"
+echo -e ""
+sudo apt-get install -y aria2
+echo -e ""
 echo -e "\e[93m>>>>> dpkg configure -a <<<<<\e[0m"
 echo -e ""
 sudo dpkg --configure -a
 
 moveOnMessage
+}
 
-
-echo "======================================================================="
-echo "==                 Download & Install Chrome & TV                    =="
-echo "======================================================================="
-cd /home/user/Downloads/
-
-function google()
+function chrome()
 {
+echo "======================================================================="
+echo "==                     Download & Install Chrome                     =="
+echo "======================================================================="
+
+cd /home/user/Downloads/
 if [ ! -f /home/user/Downloads/google-chrome-stable_current_amd64.deb ]; then
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && sudo apt install ./google-chrome-stable_current_amd64.deb -y 
 fi
-}
 
+moveOnMessage
+}
 
 function teamviewer()
 {
+echo "======================================================================="
+echo "==                   Download & Install TeamViewer                   =="
+echo "======================================================================="
+cd /home/user/Downloads/
 if [ ! -f /home/user/Downloads/teamviewer_amd64.deb ]; then
     wget https://download.teamviewer.com/download/linux/teamviewer_amd64.deb && sudo apt install ./teamviewer_amd64.deb -y
 fi	
+
+moveOnMessage
 }
 
-google
-teamviewer
-moveOnMessage
-
-
+function openvpn()
+{
 echo "======================================================================="
 echo "==                       Installing OpenVPN                          =="
 echo "======================================================================="
+
 sudo apt install -y openvpn
 echo -e ""
 echo -e ""
@@ -96,24 +150,27 @@ echo -e "\e[41m RUN: sudo cp ~/Downloads/client.ovpn /etc/openvpn/ \e[0m"
 echo -e ""
 
 moveOnMessage
+}
 
-
+function bashrc()
+{
 echo "======================================================================="
 echo "==             Adding 'vpn' running option to bashrc                 =="
 echo "======================================================================="
 
-
+cd ~
 echo "Once deployed - run vpn by typing vpn in terminal with Sudo permissions"
 echo "alias vpn='sudo openvpn --config /etc/openvpn/client.ovpn --auth-user-pass --auth-retry interact'" >> ~/.bashrc
 source ~/.bashrc
 
 moveOnMessage
+}
 
-
+function systemDiagnostic()
+{
 echo "======================================================================="
 echo "==                      System Information                           =="
 echo "======================================================================="
-
 
 echo -e "\e[44m>>>>> CPU <<<<<\e[0m"
 cat /proc/cpuinfo | grep -m1 'model name'
@@ -149,7 +206,10 @@ echo sudo grep | df -T -h /storage
 echo -e ""
 
 moveOnMessage
+}
 
+function z_mailerInstructions()
+{
 echo "======================================================================="
 echo "==             Creating a steps file for Mailer Deploying            =="
 echo "======================================================================="
@@ -183,7 +243,10 @@ Use followig site to choose your time zone: http://manpages.ubuntu.com/manpages/
 	" > ${txtMailer}
 
 moveOnMessage
+}
 
+function z_btrInstructions()
+{
 echo "======================================================================="
 echo "==             Creating a steps file for BTR Deploying               =="
 echo "======================================================================="
@@ -209,7 +272,10 @@ echo "1. Open Terminal (CTRL+ALT+T)
 	" > ${txtBTR}
 
 moveOnMessage
+}
 
+function z_btrInstruction()
+{
 echo "======================================================================="
 echo "==             Creating a steps file for webRTC Fixing               =="
 echo "======================================================================="
@@ -233,56 +299,8 @@ echo "1. Open Terminal (CTRL+ALT+T)
 	" > ${txtWebRTC}
 
 moveOnMessage
-
-
-
-echo "======================================================================="
-echo "==                               FLAGS                               =="
-echo "======================================================================="
-
-while [ ! $# -eq 0 ]
-do
-	case "$1" in
-		--help | -h)
-			help
-			exit
-			;;
-		--clean | -c)
-			secretopt
-			exit
-			;;
-		--install | -i)
-			secretopt
-			exit
-			;;
-		--dashboard | -d)
-			secretopt
-			exit
-			;;
-	esac
-	shift
-done
-
-
-
-
+}
 
 echo "======================================================================="
 echo -e "==                             \e[5mEnd of Script\e[0m                         =="
 echo "======================================================================="
-
-
-function .help()
-{
-cat << EOF
-usage: $0 PARAM [-c|--clean] [-i|--install] [-d|--dashboard] [-h|--help]
-Support Script version-1.0 - created by Gilad Bronshtein
-
-OPTIONS:
-   PARAM        	The param
-   -c|--clean  		clean.sh 1.24.2-6
-   -i|--install    	install.sh 1.24.2-6 with gravity installation & advertised IP 
-   -d|--dashbaord   dashboard download - 1.24.2
-   -h|--help    	help menu
-EOF
-}
