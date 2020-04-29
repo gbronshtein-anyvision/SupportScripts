@@ -9,14 +9,9 @@ echo "
 (______/ |____/ |  __/ |  __/  \___/ |_|       \__)   (______/  \____)|_|    |_||  __/   \__)
                 |_|    |_|                                                      |_|          
  
-Support Script version-1.0 - created by Gilad Bronshtein"
+Support Script version-1.1 - created by Gilad Bronshtein
 
-####### BT V1 #######
-## INSTALL - http://1-24-2.a-v.io/install.sh
-## CLEAN - http://1-24-2.a-v.io/clean.sh
-## DASHBOARD - https://s3.eu-central-1.amazonaws.com/anyvision-dashboard/1.24.2/AnyVision-1.24.2-linux-x86_64.AppImage
-
-
+"
 
 
 #############################################################################################
@@ -280,9 +275,9 @@ function .showhelp()
 echo ""
 echo "OPTIONS:"
 echo "[-h|--help]              Help menu"
-echo "[-p|--preinstallation]   Pre installation apps"
-echo "[-c|--clean]             Clean.sh 1.24.2-7"
-echo "[-i|--install]           Install.sh 1.24.2-7 (Online Installation)" 
+echo "[-p|--preinstallation]   Pre installation apps: Updates / SSH Server / htop / vim / curl / Aria2 / Chrome / TeamViewer / OpenVPN"
+echo "[-c|--clean]             Clean.sh 1.24.2"
+echo "[-i|--install]           Install.sh 1.24.2 (Online Installation)" 
 echo "[-d|--dashbaord]         Dashboard download to Desktop and grant execution permission - 1.24.2"
 echo "[-pd|--pdiagnostics]     Pre-Installation HW / SW Diagnostics"
 echo "[-in|--instructions]     Add instructions of BTR / WebRTC Fix / Mailer on desktop"
@@ -290,31 +285,31 @@ echo "[-in|--instructions]     Add instructions of BTR / WebRTC Fix / Mailer on 
 
 function preInstallation()
 {
-apps_Install
-openvpn
-bashrc
-chrome
-teamViewer
+	apps_Install
+	openvpn
+	bashrc
+	chrome
+	teamViewer
 }
 
 function clean()
 {
-cd ~
-wget -qO- http://1-24-2.a-v.io/clean.sh | bash -s -- -a | tee -a /root/.gravity/clean.log
-echo -e "\e[48m Before you proceed - verify your /storage set properly e[0m"
+	cd ~
+	wget -qO- http://1-24-2.a-v.io/clean.sh | bash -s -- -a | tee -a /root/.gravity/clean.log
+	echo -e "\e[48m Before you proceed - verify your /storage set properly e[0m"
 }
 
 function install()
 {
- cd ~
- wget -qO- http://1-24-2.a-v.io/install.sh | bash -s -- --advertise-ip 172.17.255.254 --auto-install-product -p bettertomorrow
+	 cd ~
+	 wget -qO- http://1-24-2.a-v.io/install.sh | bash -s -- --advertise-ip 172.17.255.254 --auto-install-product -p bettertomorrow
 }
 
 function dashboard()
 {
-cd /home/user/Desktop
-wget https://s3.eu-central-1.amazonaws.com/anyvision-dashboard/1.24.2/AnyVision-1.24.2-linux-x86_64.AppImage
-chmod +x AnyVision-1.24.2-linux-x86_64.AppImage
+	cd /home/user/Desktop
+	wget https://s3.eu-central-1.amazonaws.com/anyvision-dashboard/1.24.2/AnyVision-1.24.2-linux-x86_64.AppImage
+	chmod +x AnyVision-1.24.2-linux-x86_64.AppImage
 }
 
 function preDiagnostics()
