@@ -31,7 +31,7 @@ while test $# -gt 0; do
     key="$1"
     case $key in
         -h|help|--help)
-        .help
+        ..help
         exit 0
         ;;
         --high-availabilty)
