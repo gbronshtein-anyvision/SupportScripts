@@ -20,14 +20,12 @@ Support Script version-1.0 - created by Gilad Bronshtein
 function showhelp()
 {
 echo ""
-echo "Support Script 1.0"
-echo ""
-echo ""
 echo "OPTIONS:"
-echo "	[-h|--help] 		Help menu"
-echo "  [-c|--clean] 		Clean.sh 1.24.2-7"
-echo "  [-i|--install]    	Install.sh 1.24.2-7 with gravity installation & advertised IP" 
-echo "  [-d|--dashbaord]   	Dashboard download - 1.24.2"
+echo "[-h|--help] 				Help menu"
+echo "[-p|--preinstallation]	Pre installation helpful apps"
+echo "[-c|--clean] 				Clean.sh 1.24.2-7"
+echo "[-i|--install]    		Install.sh 1.24.2-7 with gravity installation & advertised IP" 
+echo "[-d|--dashbaord]   		Dashboard download - 1.24.2"
 }
 
 
@@ -42,7 +40,19 @@ POSITIONAL=()
 while test $# -gt 0; do
     key="$1"
     case $key in
-        -h|help|--help)
+        -h|--help)
+        showhelp
+        exit 0
+        ;;
+		 -p|--preinstallation)
+        preInstallation
+        exit 0
+        ;;
+		 -h|help|--help)
+        showhelp
+        exit 0
+        ;;
+		 -h|help|--help)
         showhelp
         exit 0
         ;;
@@ -96,7 +106,7 @@ echo -e "\e[93m>>>>> dpkg configure -a <<<<<\e[0m"
 echo -e ""
 sudo dpkg --configure -a
 
-moveOnMessage
+.moveOnMessage
 }
 
 function chrome()
@@ -110,7 +120,7 @@ if [ ! -f /home/user/Downloads/google-chrome-stable_current_amd64.deb ]; then
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && sudo apt install ./google-chrome-stable_current_amd64.deb -y 
 fi
 
-moveOnMessage
+.moveOnMessage
 }
 
 function teamViewer()
@@ -123,7 +133,7 @@ if [ ! -f /home/user/Downloads/teamviewer_amd64.deb ]; then
     wget https://download.teamviewer.com/download/linux/teamviewer_amd64.deb && sudo apt install ./teamviewer_amd64.deb -y
 fi	
 
-moveOnMessage
+.moveOnMessage
 }
 
 function openvpn()
@@ -140,7 +150,7 @@ echo -e "\e[41m Login -> Click 'Yourself (user locked profile)' at the bottom of
 echo -e "\e[41m RUN: sudo cp ~/Downloads/client.ovpn /etc/openvpn/ \e[0m"
 echo -e ""
 
-moveOnMessage
+.moveOnMessage
 }
 
 function bashrc()
@@ -154,7 +164,7 @@ echo "Once deployed - run vpn by typing vpn in terminal with Sudo permissions"
 echo "alias vpn='sudo openvpn --config /etc/openvpn/client.ovpn --auth-user-pass --auth-retry interact'" >> ~/.bashrc
 source ~/.bashrc
 
-moveOnMessage
+.moveOnMessage
 }
 
 function system_Diagnostic()
@@ -196,7 +206,7 @@ echo sudo grep | df -T -h /
 echo sudo grep | df -T -h /storage
 echo -e ""
 
-moveOnMessage
+.moveOnMessage
 }
 
 function z_mailerInstructions()
@@ -233,7 +243,7 @@ Use followig site to choose your time zone: http://manpages.ubuntu.com/manpages/
 
 	" > ${txtMailer}
 
-moveOnMessage
+.moveOnMessage
 }
 
 function z_btrInstructions()
@@ -262,7 +272,7 @@ echo "1. Open Terminal (CTRL+ALT+T)
 
 	" > ${txtBTR}
 
-moveOnMessage
+.moveOnMessage
 }
 
 function z_webRTCInstruction()
@@ -289,11 +299,13 @@ echo "1. Open Terminal (CTRL+ALT+T)
 
 	" > ${txtWebRTC}
 
-moveOnMessage
+.moveOnMessage
 }
 
 
 #############################################################################################
+preInstallation()
+{
 apps_Install
 openvpn
 bashrc
@@ -303,6 +315,8 @@ system_Diagnostic
 z_btrInstruction
 z_webRTCInstruction
 z_mailerInstructions
+}
+
 #############################################################################################
 
 echo "======================================================================="
