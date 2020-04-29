@@ -9,6 +9,15 @@ Copy following line and use it with root permissions:
 
 ```
 wget -qO- https://git.io/JfvAs | bash -s -- -a
+
+OPTIONS:
+[-h|--help]              Help menu
+[-p|--preinstallation]   Pre installation apps
+[-c|--clean]             Clean.sh 1.24.2
+[-i|--install]           Install.sh 1.24.2 (Online Installation)
+[-d|--dashbaord]         Dashboard download to Desktop and grant execution permission - 1.24.2
+[-pd|--pdiagnostics]     Pre-Installation HW / SW Diagnostics
+[-in|--instructions]     Add instructions of BTR / WebRTC Fix / Mailer on desktop
 ```
 
 ### Getting Started
