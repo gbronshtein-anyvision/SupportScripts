@@ -12,12 +12,19 @@ echo "
 Support Script version-1.0 - created by Gilad Bronshtein 
 "
 
+## BT V1 - Gilad - This is a GIT 
+## INSTALL - http://1-24-2.a-v.io/install.sh
+## CLEAN - http://1-24-2.a-v.io/clean.sh
+## DASHBOARD - https://s3.eu-central-1.amazonaws.com/anyvision-dashboard/1.24.2/AnyVision-1.24.2-linux-x86_64.AppImage
+
+
 
 ##############################################################################
 echo "======================================================================="
 echo "==                               FLAGS                               =="
 echo "======================================================================="
 ##############################################################################
+
 
 while [ ! $# -eq 0 ]
 do
@@ -65,14 +72,14 @@ EOF
 ########################################## METHODS ##########################################
 #############################################################################################
 
-function moveOnMessage()
+function .moveOnMessage()
 {
 	echo -e ""
 	echo -e "\e[45mDONE Moving on..\e[0m"
 	echo -e ""
 }
 
-function appsInstall()
+function apps_Install()
 {
 echo "======================================================================="
 echo "==         Updates / SSH Server / htop / vim / curl / Aria2          =="
@@ -122,7 +129,7 @@ fi
 moveOnMessage
 }
 
-function teamviewer()
+function teamViewer()
 {
 echo "======================================================================="
 echo "==                   Download & Install TeamViewer                   =="
@@ -166,7 +173,7 @@ source ~/.bashrc
 moveOnMessage
 }
 
-function systemDiagnostic()
+function system_Diagnostic()
 {
 echo "======================================================================="
 echo "==                      System Information                           =="
