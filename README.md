@@ -12,7 +12,7 @@ wget -qO- https://git.io/JfvAs | bash -s -- -h
 
 OPTIONS:
 [-h|--help]              Help menu
-[-p|--preinstallation]   Pre installation apps: Updates / SSH Server / htop / vim / curl / Aria2 / Chrome / TeamViewer / OpenVPN
+[-p|--preinstallation]   Pre installation apps: Updates / SSH / htop / vim / curl / Aria2 / Chrome / TV / VPN
 [-c|--clean]             Clean.sh 1.24.2
 [-i|--install]           Install.sh 1.24.2 (Gravity with Advertised IP)
 [-d|--dashbaord]         1.24.2 Dashboard download to Desktop & grant execution permission
