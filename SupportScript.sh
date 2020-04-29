@@ -31,7 +31,7 @@ while test $# -gt 0; do
     key="$1"
     case $key in
         -h|help|--help)
-        ..help
+        showhelp
         exit 0
         ;;
         --high-availabilty)
@@ -45,7 +45,7 @@ while test $# -gt 0; do
 done
 
 
-function .help()
+function showhelp()
 {
 cat << EOF
 usage: $0 PARAM [-c|--clean] [-i|--install] [-d|--dashboard] [-h|--help]
