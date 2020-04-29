@@ -22,43 +22,14 @@ function showhelp()
 echo ""
 echo "OPTIONS:"
 echo "[-h|--help] 				Help menu"
-echo "[-p|--preinstallation]	Pre installation helpful apps"
+echo "[-p|--preinstallation]		Pre installation helpful apps"
 echo "[-c|--clean] 				Clean.sh 1.24.2-7"
 echo "[-i|--install]    		Install.sh 1.24.2-7 with gravity installation & advertised IP" 
 echo "[-d|--dashbaord]   		Dashboard download - 1.24.2"
 }
 
 
-##############################################################################
-#### "======================================================================="
-#### "==                               FLAGS                               =="
-#### "======================================================================="
-##############################################################################
 
-
-POSITIONAL=()
-while test $# -gt 0; do
-    key="$1"
-    case $key in
-        -h|--help)
-        showhelp
-        exit 0
-        ;;
-		 -p|--preinstallation)
-        preInstallation
-        exit 0
-        ;;
-		 -h|help|--help)
-        showhelp
-        exit 0
-        ;;
-		 -h|help|--help)
-        showhelp
-        exit 0
-        ;;
-    esac
-    break
-done
 
 
 
@@ -322,3 +293,37 @@ z_mailerInstructions
 echo "======================================================================="
 echo -e "==                             \e[5mEnd of Script\e[0m                         =="
 echo "======================================================================="
+
+
+
+
+##############################################################################
+#### "======================================================================="
+#### "==                               FLAGS                               =="
+#### "======================================================================="
+##############################################################################
+
+
+POSITIONAL=()
+while test $# -gt 0; do
+    key="$1"
+    case $key in
+        -h|--help)
+        showhelp
+        exit 0
+        ;;
+		 -p|--preinstallation)
+        preInstallation
+        exit 0
+        ;;
+		 -h|help|--help)
+        showhelp
+        exit 0
+        ;;
+		 -h|help|--help)
+        showhelp
+        exit 0
+        ;;
+    esac
+    break
+done
