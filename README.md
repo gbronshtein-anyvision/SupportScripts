@@ -30,7 +30,7 @@ Support Script includes the following features:
 * Easy mailer instructions txt creation 
 * Easy BTR instructions txt creation
 * Easy webRTC instructions txt creation
-* V1 - Clean / Install / Download Dashboard (1.24.2-X)
+* BT V1 - Clean / Install / Download Dashboard (1.24.2-X)
 * **WIP V2 - clean.sh | install.sh | dashboard download | flags structure - V2**
 
 ### Versioning
