@@ -275,7 +275,7 @@ echo "1. Open Terminal (CTRL+ALT+T)
 
 
 #############################################################################################
-preInstallation()
+function preInstallation()
 {
 apps_Install
 openvpn
