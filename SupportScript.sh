@@ -17,6 +17,20 @@ Support Script version-1.0 - created by Gilad Bronshtein
 ## CLEAN - http://1-24-2.a-v.io/clean.sh
 ## DASHBOARD - https://s3.eu-central-1.amazonaws.com/anyvision-dashboard/1.24.2/AnyVision-1.24.2-linux-x86_64.AppImage
 
+function showhelp()
+{
+cat << EOF
+usage: $0 PARAM [-c|--clean] [-i|--install] [-d|--dashboard] [-h|--help]
+Support Script version-1.0 - created by Gilad Bronshtein
+
+OPTIONS:
+   PARAM        	The param
+   -c|--clean  		clean.sh 1.24.2-6
+   -i|--install    	install.sh 1.24.2-6 with gravity installation & advertised IP 
+   -d|--dashbaord   dashboard download - 1.24.2
+   -h|--help    	help menu
+EOF
+}
 
 
 ##############################################################################
@@ -39,19 +53,6 @@ while test $# -gt 0; do
 done
 
 
-function showhelp()
-{
-
-echo "usage: $0 PARAM [-c|--clean] [-i|--install] [-d|--dashboard] [-h|--help]
-Support Script version-1.0 - created by Gilad Bronshtein
-
-OPTIONS:
-   PARAM        	The param
-   -c|--clean  		clean.sh 1.24.2-6
-   -i|--install    	install.sh 1.24.2-6 with gravity installation & advertised IP 
-   -d|--dashbaord   dashboard download - 1.24.2
-   -h|--help    	help menu"
-}
 
 
 #############################################################################################
