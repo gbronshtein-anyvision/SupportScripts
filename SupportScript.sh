@@ -19,17 +19,15 @@ Support Script version-1.0 - created by Gilad Bronshtein
 
 function showhelp()
 {
-cat << EOF
-usage: $0 PARAM [-c|--clean] [-i|--install] [-d|--dashboard] [-h|--help]
-Support Script version-1.0 - created by Gilad Bronshtein
-
-OPTIONS:
-   PARAM        	The param
-   -c|--clean  		clean.sh 1.24.2-6
-   -i|--install    	install.sh 1.24.2-6 with gravity installation & advertised IP 
-   -d|--dashbaord   dashboard download - 1.24.2
-   -h|--help    	help menu
-EOF
+echo ""
+echo "Support Script 1.0"
+echo ""
+echo ""
+echo "OPTIONS:"
+echo "	[-h|--help] 		Help menu"
+echo "  [-c|--clean] 		Clean.sh 1.24.2-7"
+echo "  [-i|--install]    	Install.sh 1.24.2-7 with gravity installation & advertised IP" 
+echo "  [-d|--dashbaord]   	Dashboard download - 1.24.2"
 }
 
 
@@ -51,7 +49,6 @@ while test $# -gt 0; do
     esac
     break
 done
-
 
 
 
@@ -268,7 +265,7 @@ echo "1. Open Terminal (CTRL+ALT+T)
 moveOnMessage
 }
 
-function z_btrInstruction()
+function z_webRTCInstruction()
 {
 echo "======================================================================="
 echo "==             Creating a steps file for webRTC Fixing               =="
@@ -294,6 +291,19 @@ echo "1. Open Terminal (CTRL+ALT+T)
 
 moveOnMessage
 }
+
+
+#############################################################################################
+apps_Install
+openvpn
+bashrc
+chrome
+teamViewer
+system_Diagnostic
+z_btrInstruction
+z_webRTCInstruction
+z_mailerInstructions
+#############################################################################################
 
 echo "======================================================================="
 echo -e "==                             \e[5mEnd of Script\e[0m                         =="
