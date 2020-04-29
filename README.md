@@ -23,8 +23,7 @@ OPTIONS:
 ### Getting Started
 
 Support Script includes the following features:
-* apt-get update
-* Installing SSH Server / htop / vim / curl / dpkg
+* apt-get update, Installing SSH Server / htop / vim / curl / dpkg
 * Download & Install Chrome & TV
 * Installing Open VPN + vpn alias (.bashrc)
 * System Information: 
@@ -36,7 +35,8 @@ Support Script includes the following features:
 
 ### Versioning
 
-* Version 1.0 - April 12 2020
+* Version 1.0 - April 12 2020 - Linear script
+* Version 1.1 - April 29 2020 - Methods, Cases control (flags), Clean BT, Install BT, Install Dashboard
 
 ### Authors
 
