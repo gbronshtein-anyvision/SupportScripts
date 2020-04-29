@@ -23,14 +23,14 @@ OPTIONS:
 ### Getting Started
 
 Support Script includes the following features:
-* apt-get update, Installing SSH Server / htop / vim / curl / dpkg
-* Download & Install Chrome & TV
-* Installing Open VPN + vpn alias (.bashrc)
+* Update, Installing SSH Server / htop / vim / curl / dpkg / Chrome / TeamViewer / VPN
+* Add VPN alias (.bashrc)
 * System Information: 
 ** CPU, RAM, GPU, System, Disks, Ubuntu Version, Storage, Disks Space
 * Easy mailer instructions txt creation 
 * Easy BTR instructions txt creation
 * Easy webRTC instructions txt creation
+* V1 - Clean / Install / Download Dashboard (1.24.2-X)
 * **WIP V2 - clean.sh | install.sh | dashboard download | flags structure - V2**
 
 ### Versioning
