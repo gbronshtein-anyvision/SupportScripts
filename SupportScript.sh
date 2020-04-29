@@ -21,11 +21,11 @@ function showhelp()
 {
 echo ""
 echo "OPTIONS:"
-echo "[-h|--help]				Help menu"
-echo "[-p|--preinstallation]	Pre installation helpful apps"
-echo "[-c|--clean]				Clean.sh 1.24.2-7"
-echo "[-i|--install]			Install.sh 1.24.2-7 with gravity installation & advertised IP" 
-echo "[-d|--dashbaord]			Dashboard download - 1.24.2"
+echo "[-h|--help]              Help menu"
+echo "[-p|--preinstallation]   Pre installation apps"
+echo "[-c|--clean]             Clean.sh 1.24.2-7"
+echo "[-i|--install]           Install.sh 1.24.2-7 with gravity installation & advertised IP" 
+echo "[-d|--dashbaord]         Dashboard download - 1.24.2"
 }
 
 
