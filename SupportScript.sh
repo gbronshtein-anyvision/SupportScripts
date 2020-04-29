@@ -34,12 +34,6 @@ while test $# -gt 0; do
         showhelp
         exit 0
         ;;
-        --high-availabilty)
-        shift
-            HIGH_AVAILABILTY=${1:-$HIGH_AVAILABILTY}
-        shift
-        continue
-        ;;
     esac
     break
 done
@@ -47,8 +41,8 @@ done
 
 function showhelp()
 {
-cat << EOF
-usage: $0 PARAM [-c|--clean] [-i|--install] [-d|--dashboard] [-h|--help]
+
+echo "usage: $0 PARAM [-c|--clean] [-i|--install] [-d|--dashboard] [-h|--help]
 Support Script version-1.0 - created by Gilad Bronshtein
 
 OPTIONS:
@@ -56,8 +50,7 @@ OPTIONS:
    -c|--clean  		clean.sh 1.24.2-6
    -i|--install    	install.sh 1.24.2-6 with gravity installation & advertised IP 
    -d|--dashbaord   dashboard download - 1.24.2
-   -h|--help    	help menu
-EOF
+   -h|--help    	help menu"
 }
 
 
