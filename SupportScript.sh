@@ -12,7 +12,7 @@ echo "
 Support Script version-1.0 - created by Gilad Bronshtein 
 "
 
-## BT V1 - Gilad - This is a GIT 
+####### BT V1 #######
 ## INSTALL - http://1-24-2.a-v.io/install.sh
 ## CLEAN - http://1-24-2.a-v.io/clean.sh
 ## DASHBOARD - https://s3.eu-central-1.amazonaws.com/anyvision-dashboard/1.24.2/AnyVision-1.24.2-linux-x86_64.AppImage
@@ -21,16 +21,12 @@ function showhelp()
 {
 echo ""
 echo "OPTIONS:"
-echo "[-h|--help] 				Help menu"
-echo "[-p|--preinstallation]		Pre installation helpful apps"
-echo "[-c|--clean] 				Clean.sh 1.24.2-7"
-echo "[-i|--install]    		Install.sh 1.24.2-7 with gravity installation & advertised IP" 
-echo "[-d|--dashbaord]   		Dashboard download - 1.24.2"
+echo "[-h|--help]				Help menu"
+echo "[-p|--preinstallation]	Pre installation helpful apps"
+echo "[-c|--clean]				Clean.sh 1.24.2-7"
+echo "[-i|--install]			Install.sh 1.24.2-7 with gravity installation & advertised IP" 
+echo "[-d|--dashbaord]			Dashboard download - 1.24.2"
 }
-
-
-
-
 
 
 #############################################################################################
@@ -246,7 +242,7 @@ echo "1. Open Terminal (CTRL+ALT+T)
 .moveOnMessage
 }
 
-function z_webRTCInstruction()
+function z_WebRTCInstructions()
 {
 echo "======================================================================="
 echo "==             Creating a steps file for webRTC Fixing               =="
@@ -274,7 +270,14 @@ echo "1. Open Terminal (CTRL+ALT+T)
 }
 
 
-#############################################################################################
+function endMessage()
+{
+echo "======================================================================="
+echo -e "==                             \e[5mEnd of Script\e[0m                         =="
+echo "======================================================================="
+}
+
+
 function preInstallation()
 {
 apps_Install
@@ -283,25 +286,19 @@ bashrc
 chrome
 teamViewer
 system_Diagnostic
-z_btrInstruction
-z_webRTCInstruction
+z_btrInstructions
+z_WebRTCInstructions
 z_mailerInstructions
+endMessage
 }
 
-#############################################################################################
-
-echo "======================================================================="
-echo -e "==                             \e[5mEnd of Script\e[0m                         =="
-echo "======================================================================="
 
 
-
-
-##############################################################################
-#### "======================================================================="
-#### "==                               FLAGS                               =="
-#### "======================================================================="
-##############################################################################
+##################################################################################
+#### "======================================================================="####
+#### "==                               FLAGS                               =="####
+#### "======================================================================="####
+##################################################################################
 
 
 POSITIONAL=()
