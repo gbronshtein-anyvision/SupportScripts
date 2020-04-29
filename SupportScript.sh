@@ -20,36 +20,29 @@ Support Script version-1.0 - created by Gilad Bronshtein
 
 
 ##############################################################################
-echo "======================================================================="
-echo "==                               FLAGS                               =="
-echo "======================================================================="
+#### "======================================================================="
+#### "==                               FLAGS                               =="
+#### "======================================================================="
 ##############################################################################
 
 
-while [ ! $# -eq 0 ]
-do
-	case "$1" in
-		--help | -h)
-			help
-			exit
-			;;
-		--clean | -c)
-			secretopt
-			exit
-			;;
-		--install | -i)
-			secretopt
-			exit
-			;;
-		--dashboard | -d)
-			secretopt
-			exit
-			;;
-	esac
-	shift
+POSITIONAL=()
+while test $# -gt 0; do
+    key="$1"
+    case $key in
+        -h|help|--help)
+        .help
+        exit 0
+        ;;
+        --high-availabilty)
+        shift
+            HIGH_AVAILABILTY=${1:-$HIGH_AVAILABILTY}
+        shift
+        continue
+        ;;
+    esac
+    break
 done
-
-
 
 
 function .help()
