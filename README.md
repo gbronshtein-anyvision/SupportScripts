@@ -11,13 +11,13 @@ Copy following line and use it with root permissions:
 wget -qO- https://git.io/JfvAs | bash -s -- -h
 
 OPTIONS:
-[-h|--help]              Help menu
-[-p|--preinstallation]   Pre installation apps: Updates / SSH / htop / vim / curl / Aria2 / Chrome / TV / VPN
-[-c|--clean]             Clean.sh 1.24.2
-[-i|--install]           Install.sh 1.24.2 (Gravity with Advertised IP)
-[-d|--dashbaord]         1.24.2 Dashboard download to Desktop & grant execution permission
-[-pd|--pdiagnostics]     Pre-Installation HW / SW Diagnostics
-[-in|--instructions]     Add instructions of BTR / WebRTC Fix / Mailer on desktop
+[-h|--help]                Help menu
+[-p|--preinstallation]     Pre installation apps: Updates / SSH / htop / vim / curl / Aria2 / Chrome / TV / VPN
+[-c1|--clean1]             Clean.sh 1.24.2
+[-i1|--install1]           Install.sh 1.24.2 (Gravity with Advertised IP)
+[-d1|--dashbaord1]         1.24.2 Dashboard download to Desktop & grant execution permission
+[-pd|--pdiagnostics]       Pre-Installation HW / SW Diagnostics
+[-in|--instructions]       Add instructions of BTR / WebRTC Fix / Mailer on desktop
 ```
 
 ### Getting Started
