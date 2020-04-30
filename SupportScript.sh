@@ -27,155 +27,140 @@ function .moveOnMessage()
 
 function Deploy_apps_Install()
 {
-echo "======================================================================="
-echo "==         Updates / SSH Server / htop / vim / curl / Aria2          =="
-echo "======================================================================="
-
-echo -e "\e[93m>>>>> Installing Updates <<<<<\e[0m"
-echo -e ""
-sudo apt-get update
-echo -e "\e[93m>>>>> Installing SSH SERVER <<<<<\e[0m"
-echo -e ""
-sudo apt-get install ssh -y
-echo -e ""
-echo -e "\e[93m>>>>> Installing HTOP <<<<<\e[0m"
-echo -e ""
-sudo apt install htop -y
-echo -e ""
-echo -e "\e[93m>>>>> Installing VIM <<<<<\e[0m"
-echo -e ""
-sudo apt install vim -y
-echo -e ""
-echo -e "\e[93m>>>>> Installing CURL <<<<<\e[0m"
-echo -e ""
-sudo apt install curl -y
-echo -e ""
-echo -e "\e[93m>>>>> Installaing Aria2 <<<<<\e[0m"
-echo -e ""
-sudo apt-get install -y aria2
-echo -e ""
-echo -e "\e[93m>>>>> dpkg configure -a <<<<<\e[0m"
-echo -e ""
-sudo dpkg --configure -a
-
-.moveOnMessage
+	echo "======================================================================="
+	echo "==         Updates / SSH Server / htop / vim / curl / Aria2          =="
+	echo "======================================================================="
+	echo -e "\e[93m>>>>> Installing Updates <<<<<\e[0m"
+	echo -e ""
+	sudo apt-get update
+	echo -e "\e[93m>>>>> Installing SSH SERVER <<<<<\e[0m"
+	echo -e ""
+	sudo apt-get install ssh -y
+	echo -e ""
+	echo -e "\e[93m>>>>> Installing HTOP <<<<<\e[0m"
+	echo -e ""
+	sudo apt install htop -y
+	echo -e ""
+	echo -e "\e[93m>>>>> Installing VIM <<<<<\e[0m"
+	echo -e ""
+	sudo apt install vim -y
+	echo -e ""
+	echo -e "\e[93m>>>>> Installing CURL <<<<<\e[0m"
+	echo -e ""
+	sudo apt install curl -y
+	echo -e ""
+	echo -e "\e[93m>>>>> Installaing Aria2 <<<<<\e[0m"
+	echo -e ""
+	sudo apt-get install -y aria2
+	echo -e ""
+	echo -e "\e[93m>>>>> dpkg configure -a <<<<<\e[0m"
+	echo -e ""
+	sudo dpkg --configure -a
+	.moveOnMessage
 }
 
 function Deploy_chrome()
 {
-echo "======================================================================="
-echo "==                     Download & Install Chrome                     =="
-echo "======================================================================="
-
-cd /home/user/Downloads/
-if [ ! -f /home/user/Downloads/google-chrome-stable_current_amd64.deb ]; then
-    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && sudo apt install ./google-chrome-stable_current_amd64.deb -y 
-fi
-
-.moveOnMessage
+	echo "======================================================================="
+	echo "==                     Download & Install Chrome                     =="
+	echo "======================================================================="
+	cd /home/user/Downloads/
+	if [ ! -f /home/user/Downloads/google-chrome-stable_current_amd64.deb ]; then
+		wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && sudo apt install ./google-chrome-stable_current_amd64.deb -y 
+	fi
+	.moveOnMessage
 }
 
 function Deploy_teamViewer()
 {
-echo "======================================================================="
-echo "==                   Download & Install TeamViewer                   =="
-echo "======================================================================="
-cd /home/user/Downloads/
-if [ ! -f /home/user/Downloads/teamviewer_amd64.deb ]; then
-    wget https://download.teamviewer.com/download/linux/teamviewer_amd64.deb && sudo apt install ./teamviewer_amd64.deb -y
-fi	
-
-.moveOnMessage
+	echo "======================================================================="
+	echo "==                   Download & Install TeamViewer                   =="
+	echo "======================================================================="
+	cd /home/user/Downloads/
+	if [ ! -f /home/user/Downloads/teamviewer_amd64.deb ]; then
+		wget https://download.teamviewer.com/download/linux/teamviewer_amd64.deb && sudo apt install ./teamviewer_amd64.deb -y
+	fi	
+	.moveOnMessage
 }
 
 function Deploy_openvpn()
 {
-echo "======================================================================="
-echo "==                       Installing OpenVPN                          =="
-echo "======================================================================="
-
-sudo apt install -y openvpn
-echo -e ""
-echo -e ""
-echo -e "\e[41m Once done - Navigate to: https://office.anyvision.co:8443 \e[0m"
-echo -e "\e[41m Login -> Click 'Yourself (user locked profile)' at the bottom of the page \e[0m"
-echo -e "\e[41m RUN: sudo cp ~/Downloads/client.ovpn /etc/openvpn/ \e[0m"
-echo -e ""
-
-.moveOnMessage
+	echo "======================================================================="
+	echo "==                       Installing OpenVPN                          =="
+	echo "======================================================================="
+	sudo apt install -y openvpn
+	echo -e ""
+	echo -e ""
+	echo -e "\e[41m Once done - Navigate to: https://office.anyvision.co:8443 \e[0m"
+	echo -e "\e[41m Login -> Click 'Yourself (user locked profile)' at the bottom of the page \e[0m"
+	echo -e "\e[41m RUN: sudo cp ~/Downloads/client.ovpn /etc/openvpn/ \e[0m"
+	echo -e ""
+	.moveOnMessage
 }
 
 function Deploy_bashrc()
 {
-echo "======================================================================="
-echo "==             Adding 'vpn' running option to bashrc                 =="
-echo "======================================================================="
-
-cd ~
-echo "Once deployed - run vpn by typing vpn in terminal with Sudo permissions"
-echo "alias vpn='sudo openvpn --config /etc/openvpn/client.ovpn --auth-user-pass --auth-retry interact'" >> ~/.bashrc
-source ~/.bashrc
-
-.moveOnMessage
+	echo "======================================================================="
+	echo "==             Adding 'vpn' running option to bashrc                 =="
+	echo "======================================================================="
+	cd ~
+	echo "Once deployed - run vpn by typing vpn in terminal with Sudo permissions"
+	echo "alias vpn='sudo openvpn --config /etc/openvpn/client.ovpn --auth-user-pass --auth-retry interact'" >> ~/.bashrc
+	source ~/.bashrc
+	.moveOnMessage
 }
 
-function run_system_Diagnostic()
+function Run_System_Diagnostic()
 {
-echo "======================================================================="
-echo "==                      System Information                           =="
-echo "======================================================================="
-
-echo -e "\e[44m>>>>> CPU <<<<<\e[0m"
-cat /proc/cpuinfo | grep -m1 'model name'
-echo -e ""
-
-echo -e "\e[44m>>>>> RAM <<<<<\e[0m"
-free | grep -m1 'Mem'
-echo -e ""
-
-echo -e "\e[44m>>>>> GPU <<<<<\e[0m"
-lspci -v | grep 'VGA'
-echo -e ""
-
-echo -e "\e[44m>>>> System <<<\e[0m"
-echo sudo grep | dmidecode | grep -A3 '^System Information'
-echo -e ""
-
-echo -e "\e[44m>>>> Disks <<<<\e[0m"
-echo sudo grep | lsblk -o SIZE,TYPE,KNAME | grep disk
-echo -e ""
-
-echo -e "\e[44m>>>> Release <<<<\e[0m"
-echo sudo grep | lsb_release -a
-echo -e ""
-
-echo -e "\e[44m>>>> Storage <<<<\e[0m"
-echo sudo grep | mount | grep storage
-echo -e ""
-
-echo -e "\e[44m>>>> Storage Space <<<<\e[0m"
-echo sudo grep | df -T -h /
-echo sudo grep | df -T -h /storage
-echo -e ""
-
-.moveOnMessage
+	echo "======================================================================="
+	echo "==                      System Information                           =="
+	echo "======================================================================="
+	echo -e "\e[44m>>>>> CPU <<<<<\e[0m"
+	cat /proc/cpuinfo | grep -m1 'model name'
+	echo -e ""
+	echo -e "\e[44m>>>>> RAM <<<<<\e[0m"
+	free | grep -m1 'Mem'
+	echo -e ""
+	echo -e "\e[44m>>>>> GPU <<<<<\e[0m"
+	lspci -v | grep 'VGA'
+	echo -e ""
+	echo -e "\e[44m>>>> System <<<\e[0m"
+	echo sudo grep | dmidecode | grep -A3 '^System Information'
+	echo -e ""
+	echo -e "\e[44m>>>> Disks <<<<\e[0m"
+	echo sudo grep | lsblk -o SIZE,TYPE,KNAME | grep disk
+	echo -e ""
+	echo -e "\e[44m>>>> Release <<<<\e[0m"
+	echo sudo grep | lsb_release -a
+	echo -e ""
+	echo -e "\e[44m>>>> Storage <<<<\e[0m"
+	echo sudo grep | mount | grep storage
+	echo -e ""
+	echo -e "\e[44m>>>> Storage Space <<<<\e[0m"
+	echo sudo grep | df -T -h /
+	echo sudo grep | df -T -h /storage
+	echo -e ""
+	.moveOnMessage
 }
 
 function z_mailerInstructions()
 {
-echo "======================================================================="
-echo "==             Creating a steps file for Mailer Deploying            =="
-echo "======================================================================="
+	echo "======================================================================="
+	echo "==             Creating a steps file for Mailer Deploying            =="
+	echo "======================================================================="
 
-cd /home/user/Desktop
-txtMailer="mailer.txt"
-touch $txtMailer
+	cd /home/user/Desktop
+	txtMailer="mailer.txt"
+	touch $txtMailer
 echo "1. Open Terminal (CTRL+ALT+T)
 
 2. Run following Command (Enter consul pod)
+
    kubectl exec -it consul-server-0 sh
 
-3.BEFORE You continue - Change the parameters at the end of each command from line 3-7 and run following commands:
+3.BEFORE You continue - 
+Change the parameters at the end of each command from line 3-7 and run following commands:
+
 	consul kv put broadcaster-env/BCAST_MAILER_SERVICE_NAME gmail
 	consul kv put broadcaster-env/BCAST_MAILER_IS_ENABLED true
 	consul kv put broadcaster-env/BCAST_MAILER_USERNAME xxxx@yyyy.com
@@ -185,10 +170,13 @@ echo "1. Open Terminal (CTRL+ALT+T)
 	consul kv put broadcaster-env/BCAST_MAILER_SENDER_NAME CompanyName
 
 4.Time Zone
-Use followig site to choose your time zone: http://manpages.ubuntu.com/manpages/bionic/man3/DateTime::TimeZone::Catalog.3pm.html
+Use followig site to choose your time zone: 
+http://manpages.ubuntu.com/manpages/bionic/man3/DateTime::TimeZone::Catalog.3pm.html
+	
 	consul kv put broadcaster-env/TZ Asia/Jerusalem
  
 5.NOT Mandatory
+	
 	consul kv put broadcaster-env/BCAST_MAILER_SUBJECT
 
 5.Exit -> Type exit
@@ -200,19 +188,21 @@ Use followig site to choose your time zone: http://manpages.ubuntu.com/manpages/
 
 function z_btrInstructions()
 {
-echo "======================================================================="
-echo "==             Creating a steps file for BTR Deploying               =="
-echo "======================================================================="
+	echo "======================================================================="
+	echo "==             Creating a steps file for BTR Deploying               =="
+	echo "======================================================================="
 
-cd /home/user/Desktop
-txtBTR="BTR.txt"
-touch $txtBTR
+	cd /home/user/Desktop
+	txtBTR="BTR.txt"
+	touch $txtBTR
 echo "1. Open Terminal (CTRL+ALT+T)
 
 2. Run following Command (Enter consul pod)
+
    kubectl exec -it consul-server-0 sh
 
 3.Run following commands
+
 	consul kv put push-notification/RMQ_API_HOST rabbitmq.default.svc.cluster.local
 	consul kv put push-notification/FIREBASE_ADMIN_TOKEN key=AIzaSyApjUyvlbCJRQnIV0JnHKb2Fs2tUCIJopg
 	consul kv put broadcaster-env/BCAST_RMQ_IS_ENABLED true 
@@ -229,27 +219,28 @@ echo "1. Open Terminal (CTRL+ALT+T)
 
 function z_WebRTCInstructions()
 {
-echo "======================================================================="
-echo "==             Creating a steps file for webRTC Fixing               =="
-echo "======================================================================="
+	echo "======================================================================="
+	echo "==             Creating a steps file for webRTC Fixing               =="
+	echo "======================================================================="
 
-cd /home/user/Desktop
-txtWebRTC="webRTC.txt"
-touch $txtWebRTC
-echo "1. Open Terminal (CTRL+ALT+T)
+	cd /home/user/Desktop
+	txtWebRTC="webRTC.txt"
+	touch $txtWebRTC
+	echo "1. Open Terminal (CTRL+ALT+T)
 
-2. Run following Command (Enter consul pod)
-   kubectl exec -it consul-server-0 sh
+	2. Run following Command (Enter consul pod)
 
-3.Run following commands
-	consul kv put webrtc-streamer/WEBRTC_HOST [BT_SERVER_IP]
-	consul kv put webrtc-streamer/APIGATEWAY_IP [BT_SERVER_IP]
-	consul kv put webrtc-streamer/HOST_IP [BT_SERVER_IP]
+	kubectl exec -it consul-server-0 sh
 
+	3.Run following commands
 
-4.Exit -> Type exit
+		consul kv put webrtc-streamer/WEBRTC_HOST [BT_SERVER_IP]
+		consul kv put webrtc-streamer/APIGATEWAY_IP [BT_SERVER_IP]
+		consul kv put webrtc-streamer/HOST_IP [BT_SERVER_IP]
 
-	" > ${txtWebRTC}
+	4.Exit -> Type exit
+
+		" > ${txtWebRTC}
 
 .moveOnMessage
 }
@@ -257,9 +248,9 @@ echo "1. Open Terminal (CTRL+ALT+T)
 
 function .endMessage()
 {
-echo "======================================================================="
-echo -e "==                             \e[5mEnd of Script\e[0m                         =="
-echo "======================================================================="
+	echo "======================================================================="
+	echo -e "==                             \e[5mEnd of Script\e[0m                         =="
+	echo "======================================================================="
 }
 
 
@@ -272,15 +263,15 @@ echo "======================================================================="
 
 function .showhelp()
 {
-echo ""
-echo "OPTIONS:"
-echo "[-h|--help]               Help menu"
-echo "[-p|--preinstallation]    Pre installation apps: Updates / SSH Server / htop / vim / curl / Aria2 / Chrome / TeamViewer / OpenVPN"
-echo "[-c1|--clean1]             Clean.sh 1.24.2"
-echo "[-i1|--install1]           Install.sh 1.24.2 (Online Installation)" 
-echo "[-d1|--dashbaord1]         Dashboard download to Desktop and grant execution permission - 1.24.2"
-echo "[-pd|--pdiagnostics]      Pre-Installation HW / SW Diagnostics"
-echo "[-in|--instructions]      Add instructions of BTR / WebRTC Fix / Mailer on desktop"
+	echo ""
+	echo "OPTIONS:"
+	echo "[-h|--help]                  Help menu"
+	echo "[-p|--preinstallation]       Pre installation apps: Updates / SSH Server / htop / vim / curl / Aria2 / Chrome / TeamViewer / OpenVPN"
+	echo "[-c1|--clean_v1]             Clean.sh 1.24.2"
+	echo "[-i1|--install_v1]           Install.sh 1.24.2 (Online Installation)" 
+	echo "[-d1|--dashbaord_v1]         Dashboard download to Desktop and grant execution permission - 1.24.2"
+	echo "[-pd|--pdiagnostics]         Pre-Installation HW / SW Diagnostics"
+	echo "[-in|--instructions]         Add instructions of BTR / WebRTC Fix / Mailer on desktop"
 }
 
 function pre_Installation()
@@ -314,7 +305,7 @@ function v1_dashboard()
 
 function pre_Diagnostics()
 {
-	run_system_Diagnostic
+	Run_System_Diagnostic
 }
 
 
@@ -323,6 +314,24 @@ function Deploy_instructions()
 	z_btrInstructions
 	z_mailerInstructions
 	z_WebRTCInstructions
+}
+
+function v1_RM_Installation_Files()
+{
+	# ll | awk '{print $9}'
+	cd ~
+	rm ~/anv-base-k8s-1.0.19.md5
+    rm ~/anv-base-k8s-1.0.19.tar
+	rm ~/bettertomorrow-1.24.2-6.md5
+	rm ~/bettertomorrow-1.24.2-6.tar.gz
+	rm ~/clean.sh
+	rm ~/gravity_package_installer.sh
+	rm ~/install.sh
+	rm ~/k8s-infra-1.0.20.md5
+	rm ~/k8s-infra-1.0.20.tar.gz
+	rm ~/nvidia-driver-440-44-ubuntu1804-1.0.2.md5
+	rm ~/nvidia-driver-440-44-ubuntu1804-1.0.2.tar.gz
+	rm ~/rule-engine-1.24.2-rule-engine.tar.gz
 }
 
 ##################################################################################
@@ -334,8 +343,8 @@ function Deploy_instructions()
 
 POSITIONAL=()
 while test $# -gt 0; do
-    key="$1"
-    case $key in
+    flag="$1"
+    case $flag in
         -h|--help)
         .showhelp
         exit 0
