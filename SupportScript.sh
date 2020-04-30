@@ -25,7 +25,7 @@ function .moveOnMessage()
 	echo -e ""
 }
 
-function apps_Install()
+function Deploy_apps_Install()
 {
 echo "======================================================================="
 echo "==         Updates / SSH Server / htop / vim / curl / Aria2          =="
@@ -61,7 +61,7 @@ sudo dpkg --configure -a
 .moveOnMessage
 }
 
-function chrome()
+function Deploy_chrome()
 {
 echo "======================================================================="
 echo "==                     Download & Install Chrome                     =="
@@ -75,7 +75,7 @@ fi
 .moveOnMessage
 }
 
-function teamViewer()
+function Deploy_teamViewer()
 {
 echo "======================================================================="
 echo "==                   Download & Install TeamViewer                   =="
@@ -88,7 +88,7 @@ fi
 .moveOnMessage
 }
 
-function openvpn()
+function Deploy_openvpn()
 {
 echo "======================================================================="
 echo "==                       Installing OpenVPN                          =="
@@ -105,7 +105,7 @@ echo -e ""
 .moveOnMessage
 }
 
-function bashrc()
+function Deploy_bashrc()
 {
 echo "======================================================================="
 echo "==             Adding 'vpn' running option to bashrc                 =="
@@ -119,7 +119,7 @@ source ~/.bashrc
 .moveOnMessage
 }
 
-function system_Diagnostic()
+function run_system_Diagnostic()
 {
 echo "======================================================================="
 echo "==                      System Information                           =="
@@ -255,7 +255,7 @@ echo "1. Open Terminal (CTRL+ALT+T)
 }
 
 
-function endMessage()
+function .endMessage()
 {
 echo "======================================================================="
 echo -e "==                             \e[5mEnd of Script\e[0m                         =="
@@ -283,13 +283,13 @@ echo "[-pd|--pdiagnostics]      Pre-Installation HW / SW Diagnostics"
 echo "[-in|--instructions]      Add instructions of BTR / WebRTC Fix / Mailer on desktop"
 }
 
-function preInstallation()
+function pre_Installation()
 {
-	apps_Install
-	openvpn
-	bashrc
-	chrome
-	teamViewer
+	Deploy_apps_Install
+	Deploy_openvpn
+	Deploy_bashrc
+	Deploy_chrome
+	Deploy_teamViewer
 }
 
 function v1_clean()
@@ -299,26 +299,26 @@ function v1_clean()
 	echo -e "\e[48m Before you proceed - verify your /storage set properly e[0m"
 }
 
-function v1_install_v1()
+function v1_install()
 {
 	 cd ~
 	 wget -qO- http://1-24-2.a-v.io/install.sh | bash -s -- --advertise-ip 172.17.255.254 --auto-install-product -p bettertomorrow
 }
 
-function v1_dashboard_v1()
+function v1_dashboard()
 {
 	cd /home/user/Desktop
 	wget https://s3.eu-central-1.amazonaws.com/anyvision-dashboard/1.24.2/AnyVision-1.24.2-linux-x86_64.AppImage
 	chmod +x AnyVision-1.24.2-linux-x86_64.AppImage
 }
 
-function preDiagnostics()
+function pre_Diagnostics()
 {
-	system_Diagnostic
+	run_system_Diagnostic
 }
 
 
-function instructions()
+function Deploy_instructions()
 {
 	z_btrInstructions
 	z_mailerInstructions
@@ -341,27 +341,27 @@ while test $# -gt 0; do
         exit 0
         ;;
 		 -p|--preinstallation)
-        preInstallation
+        pre_Installation
         exit 0
         ;;
 		 -c1|--clean1)
-        clean
+        v1_clean
         exit 0
         ;;
 		 -i1|--install1)
-        install
+        v1_install
         exit 0
         ;;
 		-d1|--dashboard1)
-        dashboard
+        v1_dashboard
         exit 0
         ;;
 		-pd|--pdiagnostics)
-        preDiagnostics
+        pre_Diagnostics
         exit 0
         ;;
 		-in|--instructions)
-        instructions
+        Deploy_instructions
         exit 0
         ;;
     esac
