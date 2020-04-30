@@ -274,13 +274,13 @@ function .showhelp()
 {
 echo ""
 echo "OPTIONS:"
-echo "[-h|--help]              Help menu"
-echo "[-p|--preinstallation]   Pre installation apps: Updates / SSH Server / htop / vim / curl / Aria2 / Chrome / TeamViewer / OpenVPN"
-echo "[-c|--clean]             Clean.sh 1.24.2"
-echo "[-i|--install]           Install.sh 1.24.2 (Online Installation)" 
-echo "[-d|--dashbaord]         Dashboard download to Desktop and grant execution permission - 1.24.2"
-echo "[-pd|--pdiagnostics]     Pre-Installation HW / SW Diagnostics"
-echo "[-in|--instructions]     Add instructions of BTR / WebRTC Fix / Mailer on desktop"
+echo "[-h|--help]               Help menu"
+echo "[-p|--preinstallation]    Pre installation apps: Updates / SSH Server / htop / vim / curl / Aria2 / Chrome / TeamViewer / OpenVPN"
+echo "[-c1|--clean1]             Clean.sh 1.24.2"
+echo "[-i1|--install1]           Install.sh 1.24.2 (Online Installation)" 
+echo "[-d1|--dashbaord1]         Dashboard download to Desktop and grant execution permission - 1.24.2"
+echo "[-pd|--pdiagnostics]      Pre-Installation HW / SW Diagnostics"
+echo "[-in|--instructions]      Add instructions of BTR / WebRTC Fix / Mailer on desktop"
 }
 
 function preInstallation()
@@ -292,20 +292,20 @@ function preInstallation()
 	teamViewer
 }
 
-function clean()
+function v1_clean()
 {
 	cd ~
 	wget -qO- http://1-24-2.a-v.io/clean.sh | bash -s -- -a | tee -a /root/.gravity/clean.log
 	echo -e "\e[48m Before you proceed - verify your /storage set properly e[0m"
 }
 
-function install()
+function v1_install_v1()
 {
 	 cd ~
 	 wget -qO- http://1-24-2.a-v.io/install.sh | bash -s -- --advertise-ip 172.17.255.254 --auto-install-product -p bettertomorrow
 }
 
-function dashboard()
+function v1_dashboard_v1()
 {
 	cd /home/user/Desktop
 	wget https://s3.eu-central-1.amazonaws.com/anyvision-dashboard/1.24.2/AnyVision-1.24.2-linux-x86_64.AppImage
@@ -344,15 +344,15 @@ while test $# -gt 0; do
         preInstallation
         exit 0
         ;;
-		 -c|--clean)
+		 -c1|--clean1)
         clean
         exit 0
         ;;
-		 -i|--install)
+		 -i1|--install1)
         install
         exit 0
         ;;
-		-d|--dashboard)
+		-d1|--dashboard1)
         dashboard
         exit 0
         ;;
