@@ -375,7 +375,7 @@ while test $# -gt 0; do
         .showhelp
         exit 0
         ;;
-		 -p|--preinstallation)
+		 -pr|--preinstallation)
         pre_Installation
         exit 0
         ;;
