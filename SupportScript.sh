@@ -28,7 +28,7 @@ function .moveOnMessage()
 function Deploy_apps_Install()
 {
 	echo "======================================================================="
-	echo "==         Updates / SSH Server / htop / vim / curl / Aria2          =="
+	echo "==    Updates / SSH Server / htop / vim / curl / Aria2 / DevTools    =="
 	echo "======================================================================="
 	echo -e "\e[93m>>>>> Installing Updates <<<<<\e[0m"
 	echo -e ""
@@ -54,10 +54,13 @@ function Deploy_apps_Install()
 	echo -e ""
 	sudo dpkg --configure -a
 	echo -e ""
-	echo -e "\e[93m>>>>> Installaing Aria2 <<<<<\e[0m"
+	echo -e "\e[93m>>>>> Installing Aria2 <<<<<\e[0m"
 	echo -e ""
 	sudo apt-get install -y aria2
-	
+	echo -e ""
+	echo -e "\e[93m>>>>> Installing Net-tools <<<<<\e[0m"
+    echo -e ""
+    sudo apt-get install net-tools -y
 
 	.moveOnMessage
 }
@@ -268,13 +271,15 @@ function .showhelp()
 {
 	echo ""
 	echo "OPTIONS:"
-	echo "[-h|--help]                  Help menu"
-	echo "[-p|--preinstallation]       Pre installation apps: Updates / SSH Server / htop / vim / curl / Aria2 / Chrome / TeamViewer / OpenVPN"
-	echo "[-c1|--clean_v1]             Clean.sh 1.24.2"
-	echo "[-i1|--install_v1]           Install.sh 1.24.2 (Online Installation)" 
-	echo "[-d1|--dashbaord_v1]         Dashboard download to Desktop and grant execution permission - 1.24.2"
-	echo "[-pd|--pdiagnostics]         Pre-Installation HW / SW Diagnostics"
-	echo "[-in|--instructions]         Add instructions of BTR / WebRTC Fix / Mailer on desktop"
+	echo "[-h|--help]                     Help menu"
+	echo "[-pr|--preinstallation]         Pre installation apps: Updates / SSH Server / htop / vim / curl / Aria2 / Chrome / TeamViewer / OpenVPN"
+	echo "[-c1|--clean_v1]                Clean.sh 1.24.2" 
+	echo "[-f1|--startfromfresh_bt_v1]    BT V1 Start From Fresh - Run only after Clean"
+	echo "[-i1|--install_v1]              Install.sh 1.24.2 (Online Installation)" 
+	echo "[-d1|--dashbaord_v1]            Dashboard download to Desktop and grant execution permission - 1.24.2"
+	echo "[-pd|--pdiagnostics]            Pre-Installation HW / SW Diagnostics"
+	echo "[-in|--instructions]            Add instructions of BTR / WebRTC Fix / Mailer on desktop"
+	echo "[-f|--forensic]                 Download forensic video [Berlin]"
 }
 
 function pre_Installation()
@@ -331,24 +336,28 @@ function Deploy_instructions()
 	z_WebRTCInstructions
 }
 
-function v1_RM_Installation_Files()
+function v1_Start_From_Fresh()
 {
-
-	# ll | awk '{print $9}'
-	cd ~
-	# rm -rf /storage/ /ssd/ #>#>#> CLEAN ENV 
-	rm ~/anv-base-k8s-1.0.19.md5
-	rm ~/anv-base-k8s-1.0.19.tar
-	rm ~/bettertomorrow-1.24.2-6.md5
-	rm ~/bettertomorrow-1.24.2-6.tar.gz
-	rm ~/clean.sh
-	rm ~/gravity_package_installer.sh
-	rm ~/install.sh
-	rm ~/k8s-infra-1.0.20.md5
-	rm ~/k8s-infra-1.0.20.tar.gz
-	rm ~/nvidia-driver-440-44-ubuntu1804-1.0.2.md5
-	rm ~/nvidia-driver-440-44-ubuntu1804-1.0.2.tar.gz
-	rm ~/rule-engine-1.24.2-rule-engine.tar.gz
+	#SSD
+	rm -rf /ssd/apigateway
+	rm -rf /ssd/memsql
+	rm -rf /ssd/mongo_db_data
+	rm -rf /ssd/pipe_data
+	rm -rf /ssd/rabbitmq
+	rm -rf /ssd/redis_db_data
+	rm -rf /ssd/reid_service_data
+	rm -rf /ssd/seaweed-filer
+	rm -rf /ssd/track_archive_service_data
+	rm -rf /ssd/seaweed-master
+	#Storage
+	rm -rf /storage/api-logs
+	rm -rf /storage/frame_store
+	rm -rf /storage/gateway-logs
+	rm -rf /storage/memsql_backup
+	rm -rf /storage/mongo_db_backup
+	rm -rf /storage/object_store
+	rm -rf /storage/pipe-logs
+	rm -rf /storage/pipe_store
 }
 
 ##################################################################################
@@ -374,6 +383,10 @@ while test $# -gt 0; do
         v1_clean
         exit 0
         ;;
+		-f1|--startfromfresh_bt_v1)
+        v1_Start_From_Fresh
+        exit 0
+        ;;
 		 -i1|--install_bt_v1)
         v1_install
         exit 0
@@ -388,6 +401,10 @@ while test $# -gt 0; do
         ;;
 		-in|--instructions)
         Deploy_instructions
+        exit 0
+        ;;
+		-f|--forensic)
+        Download_forensics
         exit 0
         ;;
     esac
