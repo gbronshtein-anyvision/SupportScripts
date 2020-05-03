@@ -12,7 +12,7 @@ wget -qO- https://git.io/JfvAs | bash -s -- -h
 
 OPTIONS:
 [-h|--help]                     Help menu
-[-pr|--preinstallation]          Pre installation apps: Updates / SSH / htop / vim / curl / Aria2 / Chrome / TV / VPN
+[-pr|--preinstallation]         Pre installation apps: Updates / SSH / htop / vim / curl / Aria2 / Chrome / TV / VPN
 [-c1|--clean_bt_v1]             Clean.sh 1.24.2
 [-f1|--startfromfresh_bt_v1]    BT V1 Start From Fresh - Run only after Clean
 [-i1|--install_bt_v1]           Install.sh 1.24.2 (Gravity with Advertised IP)
