@@ -33,6 +33,7 @@ function Deploy_apps_Install()
 	echo -e "\e[93m>>>>> Installing Updates <<<<<\e[0m"
 	echo -e ""
 	sudo apt-get update
+	echo -e ""
 	echo -e "\e[93m>>>>> Installing SSH SERVER <<<<<\e[0m"
 	echo -e ""
 	sudo apt-get install ssh -y
@@ -49,13 +50,15 @@ function Deploy_apps_Install()
 	echo -e ""
 	sudo apt install curl -y
 	echo -e ""
-	echo -e "\e[93m>>>>> Installaing Aria2 <<<<<\e[0m"
-	echo -e ""
-	sudo apt-get install -y aria2
-	echo -e ""
 	echo -e "\e[93m>>>>> dpkg configure -a <<<<<\e[0m"
 	echo -e ""
 	sudo dpkg --configure -a
+	echo -e ""
+	echo -e "\e[93m>>>>> Installaing Aria2 <<<<<\e[0m"
+	echo -e ""
+	sudo apt-get install -y aria2
+	
+
 	.moveOnMessage
 }
 
@@ -286,21 +289,33 @@ function pre_Installation()
 function v1_clean()
 {
 	cd ~
-	wget -qO- http://1-24-2.a-v.io/clean.sh | bash -s -- -a | tee -a /root/.gravity/clean.log
-	echo -e "\e[48m Before you proceed - verify your /storage set properly e[0m"
+	wget -qO- http://1-24-2.a-v.io/clean.sh | bash -s -- -a | tee -a /root/.gravity/clean.log \
+	&& echo -e "\e[48m Before you proceed - verify your /storage set properly e[0m"
 }
 
 function v1_install()
 {
 	 cd ~
-	 wget -qO- http://1-24-2.a-v.io/install.sh | bash -s -- --advertise-ip 172.17.255.254 --auto-install-product -p bettertomorrow
+	 wget -qO- http://1-24-2.a-v.io/install.sh | bash -s -- --advertise-ip 172.17.255.254 --auto-install-product -p bettertomorrow \
+	 && reboot 
 }
 
 function v1_dashboard()
 {
 	cd /home/user/Desktop
-	wget https://s3.eu-central-1.amazonaws.com/anyvision-dashboard/1.24.2/AnyVision-1.24.2-linux-x86_64.AppImage
-	chmod +x AnyVision-1.24.2-linux-x86_64.AppImage
+	wget https://s3.eu-central-1.amazonaws.com/anyvision-dashboard/1.24.2/AnyVision-1.24.2-linux-x86_64.AppImage \
+	&& chmod +x AnyVision-1.24.2-linux-x86_64.AppImage
+}
+
+
+function Download_forensics() #version1.2
+{
+	wget https://s3.eu-central-1.amazonaws.com/anyvision-open-bucket/Berlin_Street.mp4
+}
+
+function Deploy_IFT3() #version1.2
+{
+
 }
 
 function pre_Diagnostics()
@@ -318,10 +333,12 @@ function Deploy_instructions()
 
 function v1_RM_Installation_Files()
 {
+
 	# ll | awk '{print $9}'
 	cd ~
+	# rm -rf /storage/ /ssd/ #>#>#> CLEAN ENV 
 	rm ~/anv-base-k8s-1.0.19.md5
-    rm ~/anv-base-k8s-1.0.19.tar
+	rm ~/anv-base-k8s-1.0.19.tar
 	rm ~/bettertomorrow-1.24.2-6.md5
 	rm ~/bettertomorrow-1.24.2-6.tar.gz
 	rm ~/clean.sh
@@ -353,15 +370,15 @@ while test $# -gt 0; do
         pre_Installation
         exit 0
         ;;
-		 -c1|--clean1)
+		 -c1|--clean_bt_v1)
         v1_clean
         exit 0
         ;;
-		 -i1|--install1)
+		 -i1|--install_bt_v1)
         v1_install
         exit 0
         ;;
-		-d1|--dashboard1)
+		-d1|--dashboard_bt_v1)
         v1_dashboard
         exit 0
         ;;
