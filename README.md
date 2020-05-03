@@ -12,12 +12,14 @@ wget -qO- https://git.io/JfvAs | bash -s -- -h
 
 OPTIONS:
 [-h|--help]                     Help menu
-[-p|--preinstallation]          Pre installation apps: Updates / SSH / htop / vim / curl / Aria2 / Chrome / TV / VPN
+[-pr|--preinstallation]          Pre installation apps: Updates / SSH / htop / vim / curl / Aria2 / Chrome / TV / VPN
 [-c1|--clean_bt_v1]             Clean.sh 1.24.2
+[-f1|--startfromfresh_bt_v1]    BT V1 Start From Fresh - Run only after Clean
 [-i1|--install_bt_v1]           Install.sh 1.24.2 (Gravity with Advertised IP)
 [-d1|--dashbaord_bt_v1]         1.24.2 Dashboard download to Desktop & grant execution permission
 [-pd|--pdiagnostics]            Pre-Installation HW / SW Diagnostics
 [-in|--instructions]            Add instructions of BTR / WebRTC Fix / Mailer on desktop
+[-f|--forensic]                 Download forensic video [Berlin]
 ```
 
 ### Getting Started
