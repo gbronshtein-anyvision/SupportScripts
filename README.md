@@ -41,6 +41,7 @@ Support Script includes the following features:
 
 * Version 1.0 - April 12 2020 - Linear script
 * Version 1.1 - April 29 2020 - Methods, Cases control (flags), Clean BT, Install BT, Install Dashboard
+* Version 1.2 - May 04 2020 - Rule Engine, Forensic video download, Start from fresh (SSD / Storage Deletions) 
 
 ### Authors
 
