@@ -10,7 +10,7 @@ Copy following line and use it with root permissions:
 ```
 wget -qO- https://git.io/JfvAs | bash -s -- -h
 ```
-
+```
 OPTIONS:
 	[-h|--help]                     Help menu
 	[-ap|--apps]                    Installation apps: Updates / SSH / htop / vim / curl / Aria2 / Chrome / TV / VPN
@@ -22,7 +22,7 @@ OPTIONS:
 	[-di|--diagnostics]             Pre-Installation HW / SW Diagnostics
 	[-in|--instructions]            Add instructions of BTR / WebRTC Fix / Mailer on desktop
 	[-f|--forensic]                 Download forensic video [Berlin]
-
+```
 ### Getting Started
 
 Support Script includes the following features:
