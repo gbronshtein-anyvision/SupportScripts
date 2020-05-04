@@ -9,8 +9,9 @@ Copy following line and use it with root permissions:
 
 ```
 wget -qO- https://git.io/JfvAs | bash -s -- -h
+```
 
-	OPTIONS:
+OPTIONS:
 	[-h|--help]                     Help menu
 	[-ap|--apps]                    Installation apps: Updates / SSH / htop / vim / curl / Aria2 / Chrome / TV / VPN
 	[-c1|--clean_v1]                Clean.sh 1.24.2
@@ -21,7 +22,6 @@ wget -qO- https://git.io/JfvAs | bash -s -- -h
 	[-di|--diagnostics]             Pre-Installation HW / SW Diagnostics
 	[-in|--instructions]            Add instructions of BTR / WebRTC Fix / Mailer on desktop
 	[-f|--forensic]                 Download forensic video [Berlin]
-```
 
 ### Getting Started
 
