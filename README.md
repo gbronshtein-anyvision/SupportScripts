@@ -10,16 +10,17 @@ Copy following line and use it with root permissions:
 ```
 wget -qO- https://git.io/JfvAs | bash -s -- -h
 
-OPTIONS:
-[-h|--help]                     Help menu
-[-pr|--preinstallation]         Pre installation apps: Updates / SSH / htop / vim / curl / Aria2 / Chrome / TV / VPN
-[-c1|--clean_bt_v1]             Clean.sh 1.24.2
-[-f1|--startfromfresh_bt_v1]    BT V1 Start From Fresh - Run only after Clean
-[-i1|--install_bt_v1]           Install.sh 1.24.2 (Gravity with Advertised IP)
-[-d1|--dashbaord_bt_v1]         1.24.2 Dashboard download to Desktop & grant execution permission
-[-pd|--pdiagnostics]            Pre-Installation HW / SW Diagnostics
-[-in|--instructions]            Add instructions of BTR / WebRTC Fix / Mailer on desktop
-[-f|--forensic]                 Download forensic video [Berlin]
+	OPTIONS:
+	[-h|--help]                     Help menu
+	[-ap|--apps]                    Pre installation apps: Updates / SSH / htop / vim / curl / Aria2 / Chrome / TV / VPN
+	[-c1|--clean_v1]                Clean.sh 1.24.2
+	[-f1|--startfromfresh_bt_v1]    BT V1 Start From Fresh - Run only after Clean
+	[-i1|--install_v1]              Install.sh 1.24.2 (Online Installation)
+	[-d1|--dashbaord_v1]            Dashboard download to Desktop and grant execution permission - 1.24.2
+	[-r1|--rule_engine_v1]          Download and install rule engine 1.24.2
+	[-di|--diagnostics]             Pre-Installation HW / SW Diagnostics
+	[-in|--instructions]            Add instructions of BTR / WebRTC Fix / Mailer on desktop
+	[-f|--forensic]                 Download forensic video [Berlin]
 ```
 
 ### Getting Started
