@@ -9,7 +9,7 @@ echo "
 (______/ |____/ |  __/ |  __/  \___/ |_|       \__)   (______/  \____)|_|    |_||  __/   \__)
                 |_|    |_|                                                      |_|          
  
-Support Script version-1.1 - created by Gilad Bronshtein
+Support Script v1.2 - created by Gilad Bronshtein
 
 "
 
@@ -272,7 +272,7 @@ function .showhelp()
 	echo ""
 	echo "OPTIONS:"
 	echo "[-h|--help]                     Help menu"
-	echo "[-ap|--apps]                    Pre installation apps: Updates / SSH Server / htop / vim / curl / Aria2 / Chrome / TeamViewer / OpenVPN"
+	echo "[-ap|--apps]                    Pre installation apps: Updates / SSH / htop / vim / curl / Aria2 / Chrome / TV / VPN"
 	echo "[-c1|--clean_v1]                Clean.sh 1.24.2" 
 	echo "[-f1|--startfromfresh_bt_v1]    BT V1 Start From Fresh - Run only after Clean"
 	echo "[-i1|--install_v1]              Install.sh 1.24.2 (Online Installation)" 
