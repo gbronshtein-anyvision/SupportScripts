@@ -272,12 +272,13 @@ function .showhelp()
 	echo ""
 	echo "OPTIONS:"
 	echo "[-h|--help]                     Help menu"
-	echo "[-pr|--preinstallation]         Pre installation apps: Updates / SSH Server / htop / vim / curl / Aria2 / Chrome / TeamViewer / OpenVPN"
+	echo "[-ap|--apps]                    Pre installation apps: Updates / SSH Server / htop / vim / curl / Aria2 / Chrome / TeamViewer / OpenVPN"
 	echo "[-c1|--clean_v1]                Clean.sh 1.24.2" 
 	echo "[-f1|--startfromfresh_bt_v1]    BT V1 Start From Fresh - Run only after Clean"
 	echo "[-i1|--install_v1]              Install.sh 1.24.2 (Online Installation)" 
 	echo "[-d1|--dashbaord_v1]            Dashboard download to Desktop and grant execution permission - 1.24.2"
-	echo "[-pd|--pdiagnostics]            Pre-Installation HW / SW Diagnostics"
+	echo "[-r1|--rule_engine_v1]          Download and install rule engine 1.24.2"
+	echo "[-di|--diagnostics]             Pre-Installation HW / SW Diagnostics"
 	echo "[-in|--instructions]            Add instructions of BTR / WebRTC Fix / Mailer on desktop"
 	echo "[-f|--forensic]                 Download forensic video [Berlin]"
 }
@@ -320,7 +321,9 @@ function Download_forensics() #version1.2
 
 function Deploy_IFT3() #version1.2
 {
-
+	cd ~
+	curl -O https://gravity-bundles.s3.eu-central-1.amazonaws.com/products/rule-engine/2.0.0/rule-engine-1.24.2-rule-engine.tar.gz \
+	&& ./gravity_package_installer.sh rule-engine-1.24.2-rule-engine.tar.gz
 }
 
 function pre_Diagnostics()
@@ -338,7 +341,7 @@ function Deploy_instructions()
 
 function v1_Start_From_Fresh()
 {
-	#SSD
+	#CLEAN SSD
 	rm -rf /ssd/apigateway
 	rm -rf /ssd/memsql
 	rm -rf /ssd/mongo_db_data
@@ -349,7 +352,7 @@ function v1_Start_From_Fresh()
 	rm -rf /ssd/seaweed-filer
 	rm -rf /ssd/track_archive_service_data
 	rm -rf /ssd/seaweed-master
-	#Storage
+	#CLEAN Storage
 	rm -rf /storage/api-logs
 	rm -rf /storage/frame_store
 	rm -rf /storage/gateway-logs
@@ -375,7 +378,7 @@ while test $# -gt 0; do
         .showhelp
         exit 0
         ;;
-		 -pr|--preinstallation)
+		 -ap|--apps)
         pre_Installation
         exit 0
         ;;
@@ -395,7 +398,11 @@ while test $# -gt 0; do
         v1_dashboard
         exit 0
         ;;
-		-pd|--pdiagnostics)
+		-r1|--rule_engine_v1)
+        v1_dashboard
+        exit 0
+        ;;
+		-d1|--diagnostics)
         pre_Diagnostics
         exit 0
         ;;
