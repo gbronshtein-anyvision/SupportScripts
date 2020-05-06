@@ -1,9 +1,4 @@
 #!/bin/bash
-if [[ $EUID -ne 0 ]]; then 
-   echo "This script must be run as root" 
-   exit 1 
-fi
-
 echo "
   ______                                                ______                _              
  / _____)                                      _       / _____)              (_)         _   
@@ -16,7 +11,14 @@ echo "
 Support Script v1.2 - created by Gilad Bronshtein
 
 "
-
+if [[ $EUID -ne 0 ]]; then 
+   echo -e "\e[41mThis script must be run as root\e[0m"
+   echo -e "\e[42mThis script must be run as root\e[0m"
+   echo -e "\e[43mThis script must be run as root\e[0m"
+   echo -e "\e[44mThis script must be run as root\e[0m"
+   echo -e "\e[45mThis script must be run as root\e[0m"
+   exit 1 
+fi
 
 #############################################################################################
 ########################################## METHODS ##########################################
