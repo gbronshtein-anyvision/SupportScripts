@@ -18,6 +18,11 @@ Support Script v1.2 - created by Gilad Bronshtein
 ########################################## METHODS ##########################################
 #############################################################################################
 
+if [[ $EUID -ne 0 ]]; then 
+   echo "This script must be run as root" 
+   exit 1 
+fi
+
 function .moveOnMessage()
 {
 	echo -e ""
@@ -302,8 +307,13 @@ function v1_clean()
 function v1_install()
 {
 	 cd ~
-	 wget -qO- http://1-24-2.a-v.io/install.sh | bash -s -- --advertise-ip 172.17.255.254 --auto-install-product -p bettertomorrow \
-	 && reboot 
+	 storageCheck=lsblk | grep storage
+	 if [[ storageCheck != '*storage*' ]];then 
+		echo "/storage was not configured"
+	 else
+		wget -qO- http://1-24-2.a-v.io/install.sh | bash -s -- --advertise-ip 172.17.255.254 --auto-install-product -p bettertomorrow \
+	 	&& reboot 
+	 fi
 }
 
 function v1_dashboard()
