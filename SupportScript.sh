@@ -1,4 +1,8 @@
 #!/bin/bash
+if [[ $EUID -ne 0 ]]; then 
+   echo "This script must be run as root" 
+   exit 1 
+fi
 
 echo "
   ______                                                ______                _              
@@ -18,10 +22,7 @@ Support Script v1.2 - created by Gilad Bronshtein
 ########################################## METHODS ##########################################
 #############################################################################################
 
-if [[ $EUID -ne 0 ]]; then 
-   echo "This script must be run as root" 
-   exit 1 
-fi
+
 
 function .moveOnMessage()
 {
