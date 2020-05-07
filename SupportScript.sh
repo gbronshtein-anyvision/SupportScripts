@@ -313,9 +313,8 @@ function v1_install()
 
 	cd ~
 	# Variables #
-	rowscount=lsblk | grep disk | wc -l
-	storageCheck=lsblk | grep storage
-
+	rowscount="$(lsblk | grep disk | wc -l)"
+	storageCheck="$(lsblk | grep storage)"
 	if [[ rowscount > 1 ]];then
 	 	if [[ storageCheck != '*storage*' ]];then 
 		echo "/storage was not configured"
