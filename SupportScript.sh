@@ -316,7 +316,7 @@ function v1_install()
 	rowscount="$(lsblk | grep disk | wc -l)"
 	storageCheck="$(lsblk | grep storage)"
 	if [[ rowscount > 1 ]];then
-	 	if [[ storageCheck != '*storage*' ]];then 
+	 	if [[ storageCheck != *"storage"* ]];then 
 		echo "/storage was not configured"
 		else
 			wget -qO- http://1-24-2.a-v.io/install.sh | bash -s -- --advertise-ip 172.17.255.254 --auto-install-product -p bettertomorrow \
