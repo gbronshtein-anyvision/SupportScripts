@@ -9,7 +9,7 @@ echo "
 (______/ |____/ |  __/ |  __/  \___/ |_|       \__)   (______/  \____)|_|    |_||  __/   \__)
                 |_|    |_|                                                      |_|          
  
-Support Script v1.2 - created by Gilad Bronshtein
+Support Script v1.2 - created by Gilad Bronshtein - wget -qO- https://git.io/JfvAs | bash -s -- -h
 
 "
 if [[ $EUID -ne 0 ]]; then 
@@ -308,14 +308,25 @@ function v1_clean()
 
 function v1_install()
 {
-	 cd ~
-	 storageCheck=lsblk | grep storage
-	 if [[ storageCheck != '*storage*' ]];then 
+	#Here we check how many disks physically installed - if 1 - moving on to installation - it's probably a demo laptop with SSD only
+	#IF 2 disks we check whether there /storage is set 
+
+	cd ~
+	# Variables #
+	rowscount=lsblk | grep disk | wc -l
+	storageCheck=lsblk | grep storage
+
+	if [[ rowscount > 1 ]];then
+	 	if [[ storageCheck != '*storage*' ]];then 
 		echo "/storage was not configured"
-	 else
+		else
+			wget -qO- http://1-24-2.a-v.io/install.sh | bash -s -- --advertise-ip 172.17.255.254 --auto-install-product -p bettertomorrow \
+	 		&& reboot 
+	 	fi
+	else
 		wget -qO- http://1-24-2.a-v.io/install.sh | bash -s -- --advertise-ip 172.17.255.254 --auto-install-product -p bettertomorrow \
-	 	&& reboot 
-	 fi
+	 		&& reboot 
+	fi
 }
 
 function v1_dashboard()
