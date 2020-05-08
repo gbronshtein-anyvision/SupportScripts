@@ -319,34 +319,27 @@ function v1_install()
 	 	if [[ storageCheck != *"storage"* ]];then 
 		echo "/storage was not configured"
 		else
-			wget -qO- http://1-24-2.a-v.io/install.sh | bash -s -- --advertise-ip 172.17.255.254 --auto-install-product -p bettertomorrow 
-	 		
-			 
-			 
+			wget -qO- http://1-24-2.a-v.io/install.sh | bash -s -- --advertise-ip 172.17.255.254 --auto-install-product -p bettertomorrow
 	 	fi
 	else
-		wget -qO- http://1-24-2.a-v.io/install.sh | bash -s -- --advertise-ip 172.17.255.254 --auto-install-product -p bettertomorrow 
-
-
+		wget -qO- http://1-24-2.a-v.io/install.sh | bash -s -- --advertise-ip 172.17.255.254 --auto-install-product -p bettertomorrow
 	fi
-	 
 	while true
 	do
 	read -r -p "Installation completed - would you like to reboot? [Y/n] " input
-	
-	case $input in
-		[yY][eE][sS]|[yY])
-	echo "Yes"
-	break
-	;;
-		[nN][oO]|[nN])
-	echo "No"
-	break
-			;;
-		*)
-	echo "Invalid input..."
-	;;
-	esac
+		case $input in
+			[yY][eE][sS]|[yY])
+		echo "Yes"
+		break
+		;;
+			[nN][oO]|[nN])
+		echo "No"
+		break
+				;;
+			*)
+		echo "Invalid input..."
+		;;
+		esac
 	done
 }
 
@@ -363,7 +356,7 @@ function Download_forensics() #version1.2
 	wget https://s3.eu-central-1.amazonaws.com/anyvision-open-bucket/Berlin_Street.mp4
 }
 
-function Deploy_IFT3() #version1.2
+function v1_RuleEngine() #version1.2
 {
 	cd ~
 	curl -O https://gravity-bundles.s3.eu-central-1.amazonaws.com/products/rule-engine/2.0.0/rule-engine-1.24.2-rule-engine.tar.gz \
@@ -443,7 +436,7 @@ while test $# -gt 0; do
         exit 0
         ;;
 		-r1|--rule_engine_v1)
-        v1_dashboard
+        v1_RuleEngine
         exit 0
         ;;
 		-di|--diagnostics)
