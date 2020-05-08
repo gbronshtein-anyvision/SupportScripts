@@ -10,7 +10,6 @@ echo "
                 |_|    |_|                                                      |_|          
  
 Support Script v1.2 - created by Gilad Bronshtein - wget -qO- https://git.io/JfvAs | bash -s -- -h
-
 "
 if [[ $EUID -ne 0 ]]; then 
    echo -e "\e[41mThis script must be run as root\e[0m"
@@ -315,17 +314,40 @@ function v1_install()
 	# Variables #
 	rowscount="$(lsblk | grep disk | wc -l)"
 	storageCheck="$(lsblk | grep storage)"
+
 	if [[ rowscount > 1 ]];then
 	 	if [[ storageCheck != *"storage"* ]];then 
 		echo "/storage was not configured"
 		else
-			wget -qO- http://1-24-2.a-v.io/install.sh | bash -s -- --advertise-ip 172.17.255.254 --auto-install-product -p bettertomorrow \
-	 		&& reboot 
+			wget -qO- http://1-24-2.a-v.io/install.sh | bash -s -- --advertise-ip 172.17.255.254 --auto-install-product -p bettertomorrow 
+	 		
+			 
+			 
 	 	fi
 	else
-		wget -qO- http://1-24-2.a-v.io/install.sh | bash -s -- --advertise-ip 172.17.255.254 --auto-install-product -p bettertomorrow \
-	 		&& reboot 
+		wget -qO- http://1-24-2.a-v.io/install.sh | bash -s -- --advertise-ip 172.17.255.254 --auto-install-product -p bettertomorrow 
+
+
 	fi
+	 
+	while true
+	do
+	read -r -p "Installation completed - would you like to reboot? [Y/n] " input
+	
+	case $input in
+		[yY][eE][sS]|[yY])
+	echo "Yes"
+	break
+	;;
+		[nN][oO]|[nN])
+	echo "No"
+	break
+			;;
+		*)
+	echo "Invalid input..."
+	;;
+	esac
+	done
 }
 
 function v1_dashboard()
