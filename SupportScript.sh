@@ -352,9 +352,9 @@ function v1_RuleEngine #version1.2
 		.moveOnMessage
 	}
 
-function pre_Diagnostics { 	Run_System_Diagnostic; }
+function pre_Diagnostics { 	run_System_Diagnostic; }
 function deploy_Instructions { 	z_btrInstructions;	z_mailerInstructions; 	z_WebRTCInstructions; }
-function pre_Installation { Deploy_apps_Install; Deploy_openvpn; Deploy_chrome; Deploy_teamViewer; }
+function pre_Installation { deploy_Apps_Install; deploy_OpenVPN; deploy_Chrome; deploy_TeamViewer; }
 function v1_Start_From_Fresh()
 	{
 		#CLEAN SSD
