@@ -15,7 +15,12 @@ OPTIONS:
 
 [-h|--help]                     Help menu
 [-ap|--apps]                    Pre installation apps: Updates / SSH / htop / vim / curl / Aria2 / Chrome / TV
-[-lo|--livelogs]                Deploy live logs alias commands
+[-lo|--livelogs]                Deploy live logs alias commands:
+                                apilive
+                                gatewaylive
+                                edgelive
+                                collatelive
+                                nginxlive
 [-c1|--clean_v1]                Clean.sh 1.24.2
 [-f1|--startfromfresh_bt_v1]    BT V1 Start From Fresh - Run only after Clean
 [-i1|--install_v1]              Install.sh 1.24.2 (Online Installation)
