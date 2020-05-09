@@ -78,10 +78,6 @@ function deploy_Apps_Install
 		echo -e ""
 		sudo apt install curl -y
 		echo -e ""
-		echo -e "\e[93m>>>>> dpkg configure -a <<<<<\e[0m"
-		echo -e ""
-		sudo dpkg --configure -a
-		echo -e ""
 		echo -e "\e[93m>>>>> Installing Aria2 <<<<<\e[0m"
 		echo -e ""
 		sudo apt-get install -y aria2
@@ -135,7 +131,6 @@ function deploy_OpenVPN
 		source ~/.bashrc
 		.moveOnMessage
 	}
-
 
 
 function run_System_Diagnostic
@@ -353,8 +348,11 @@ function v1_RuleEngine #version1.2
 	}
 
 function pre_Diagnostics { 	run_System_Diagnostic; }
+
 function deploy_Instructions { 	z_btrInstructions;	z_mailerInstructions; 	z_WebRTCInstructions; }
+
 function pre_Installation { deploy_Apps_Install; deploy_OpenVPN; deploy_Chrome; deploy_TeamViewer; }
+
 function v1_Start_From_Fresh()
 	{
 		#CLEAN SSD
@@ -394,6 +392,9 @@ function deploy_LiveLogs()
 		source ~/.bashrc
 		.moveOnMessage
 	}
+
+
+
 
 ##################################################################################
 #### "======================================================================="####
