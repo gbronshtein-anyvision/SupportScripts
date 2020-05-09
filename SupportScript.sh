@@ -20,6 +20,24 @@ if [[ $EUID -ne 0 ]]; then
    exit 1 
 fi
 
+function .showhelp()
+{
+	echo ""
+	echo "OPTIONS:"
+	echo "[-h|--help]                     Help menu"
+	echo "[-ap|--apps]                    Pre installation apps: Updates / SSH / htop / vim / curl / Aria2 / Chrome / TV"
+	echo "[-lo|--livelogs]                Deploy live logs alias commands" 
+	echo "[-c1|--clean_v1]                Clean.sh 1.24.2" 
+	echo "[-f1|--startfromfresh_bt_v1]    BT V1 Start From Fresh - Run only after Clean"
+	echo "[-i1|--install_v1]              Install.sh 1.24.2 (Online Installation)" 
+	echo "[-d1|--dashbaord_v1]            Dashboard download to Desktop and grant execution permission - 1.24.2"
+	echo "[-r1|--rule_engine_v1]          Download and install rule engine 1.24.2"
+	echo "[-di|--diagnostics]             Pre-Installation HW / SW Diagnostics"
+	echo "[-in|--instructions]            Add instructions of BTR / WebRTC Fix / Mailer on desktop"
+	echo "[-f|--forensic]                 Download forensic video [Berlin]"
+	echo "[-o|--openVPN]                  Install OpenVPN and Deploy aliasn in .bashrc"
+}
+
 #############################################################################################
 ########################################## METHODS ##########################################
 #############################################################################################
@@ -27,11 +45,11 @@ fi
 function .moveOnMessage()
 {
 	echo -e ""
-	echo -e "\e[45mDONE Moving on..\e[0m"
+	echo -e "\e[45mDONE\e[0m"
 	echo -e ""
 }
 
-function Deploy_apps_Install()
+function deploy_Apps_Install
 {
 	echo "======================================================================="
 	echo "==    Updates / SSH Server / htop / vim / curl / Aria2 / DevTools    =="
@@ -71,7 +89,7 @@ function Deploy_apps_Install()
 	.moveOnMessage
 }
 
-function Deploy_chrome()
+function deploy_Chrome
 {
 	echo "======================================================================="
 	echo "==                     Download & Install Chrome                     =="
@@ -83,7 +101,7 @@ function Deploy_chrome()
 	.moveOnMessage
 }
 
-function Deploy_teamViewer()
+function deploy_TeamViewer
 {
 	echo "======================================================================="
 	echo "==                   Download & Install TeamViewer                   =="
@@ -95,7 +113,7 @@ function Deploy_teamViewer()
 	.moveOnMessage
 }
 
-function Deploy_openvpn()
+function deploy_OpenVPN
 {
 	echo "======================================================================="
 	echo "==                       Installing OpenVPN                          =="
@@ -107,14 +125,6 @@ function Deploy_openvpn()
 	echo -e "\e[41m Login -> Click 'Yourself (user locked profile)' at the bottom of the page \e[0m"
 	echo -e "\e[41m RUN: sudo cp ~/Downloads/client.ovpn /etc/openvpn/ \e[0m"
 	echo -e ""
-	.moveOnMessage
-}
-
-function Deploy_bashrc()
-{
-	echo "======================================================================="
-	echo "==             Adding 'vpn' running option to bashrc                 =="
-	echo "======================================================================="
 	cd ~
 	echo "Once deployed - run vpn by typing vpn in terminal with Sudo permissions"
 	echo "alias vpn='sudo openvpn --config /etc/openvpn/client.ovpn --auth-user-pass --auth-retry interact'" >> ~/.bashrc
@@ -122,7 +132,9 @@ function Deploy_bashrc()
 	.moveOnMessage
 }
 
-function Run_System_Diagnostic()
+
+
+function run_System_Diagnostic
 {
 	echo "======================================================================="
 	echo "==                      System Information                           =="
@@ -273,39 +285,18 @@ function .endMessage()
 #### "======================================================================="####
 ##################################################################################
 
-function .showhelp()
-{
-	echo ""
-	echo "OPTIONS:"
-	echo "[-h|--help]                     Help menu"
-	echo "[-ap|--apps]                    Pre installation apps: Updates / SSH / htop / vim / curl / Aria2 / Chrome / TV / VPN"
-	echo "[-c1|--clean_v1]                Clean.sh 1.24.2" 
-	echo "[-f1|--startfromfresh_bt_v1]    BT V1 Start From Fresh - Run only after Clean"
-	echo "[-i1|--install_v1]              Install.sh 1.24.2 (Online Installation)" 
-	echo "[-d1|--dashbaord_v1]            Dashboard download to Desktop and grant execution permission - 1.24.2"
-	echo "[-r1|--rule_engine_v1]          Download and install rule engine 1.24.2"
-	echo "[-di|--diagnostics]             Pre-Installation HW / SW Diagnostics"
-	echo "[-in|--instructions]            Add instructions of BTR / WebRTC Fix / Mailer on desktop"
-	echo "[-f|--forensic]                 Download forensic video [Berlin]"
-}
 
-function pre_Installation()
-{
-	Deploy_apps_Install
-	Deploy_openvpn
-	Deploy_bashrc
-	Deploy_chrome
-	Deploy_teamViewer
-}
 
-function v1_clean()
+
+
+function v1_Clean()
 {
 	cd ~
 	wget -qO- http://1-24-2.a-v.io/clean.sh | bash -s -- -a | tee -a /root/.gravity/clean.log \
 	&& echo -e "\e[48m Before you proceed - verify your /storage set properly e[0m"
 }
 
-function v1_install()
+function v1_Install
 {
 	#Here we check how many disks physically installed - if 1 - moving on to installation - it's probably a demo laptop with SSD only
 	#IF 2 disks we check whether there /storage is set 
@@ -324,26 +315,27 @@ function v1_install()
 	else
 		wget -qO- http://1-24-2.a-v.io/install.sh | bash -s -- --advertise-ip 172.17.255.254 --auto-install-product -p bettertomorrow
 	fi
-	while true
-	do
+	############# Reboot Section #############
+	while true;	do
 	read -r -p "Installation completed - would you like to reboot? [Y/n] " input
 		case $input in
-			[yY][eE][sS]|[yY])
-		echo "Yes"
-		break
-		;;
-			[nN][oO]|[nN])
-		echo "No"
-		break
-				;;
-			*)
-		echo "Invalid input..."
-		;;
+		[yY][eE][sS]|[yY])
+			echo "Yes"
+			reboot
+			break
+			;;
+		[nN][oO]|[nN])
+			echo "No"
+			break
+			;;
+		*)
+			echo "Invalid input..."
+			;;
 		esac
 	done
 }
 
-function v1_dashboard()
+function v1_Dashboard
 {
 	cd /home/user/Desktop
 	wget https://s3.eu-central-1.amazonaws.com/anyvision-dashboard/1.24.2/AnyVision-1.24.2-linux-x86_64.AppImage \
@@ -351,30 +343,21 @@ function v1_dashboard()
 }
 
 
-function Download_forensics() #version1.2
+function download_Forensics #version1.2
 {
 	wget https://s3.eu-central-1.amazonaws.com/anyvision-open-bucket/Berlin_Street.mp4
 }
 
-function v1_RuleEngine() #version1.2
+function v1_RuleEngine #version1.2
 {
 	cd ~
 	curl -O https://gravity-bundles.s3.eu-central-1.amazonaws.com/products/rule-engine/2.0.0/rule-engine-1.24.2-rule-engine.tar.gz \
 	&& ./gravity_package_installer.sh rule-engine-1.24.2-rule-engine.tar.gz
 }
 
-function pre_Diagnostics()
-{
-	Run_System_Diagnostic
-}
-
-
-function Deploy_instructions()
-{
-	z_btrInstructions
-	z_mailerInstructions
-	z_WebRTCInstructions
-}
+function pre_Diagnostics { 	Run_System_Diagnostic; }
+function deploy_Instructions { 	z_btrInstructions;	z_mailerInstructions; 	z_WebRTCInstructions; }
+function pre_Installation { Deploy_apps_Install; Deploy_openvpn; Deploy_chrome; Deploy_teamViewer; }
 
 function v1_Start_From_Fresh()
 {
@@ -400,6 +383,22 @@ function v1_Start_From_Fresh()
 	rm -rf /storage/pipe_store
 }
 
+
+function deploy_LiveLogs()
+{
+	echo "======================================================================="
+	echo "==                        Live Logs Alias Line                       =="
+	echo "======================================================================="
+	cd ~
+	echo "alias apilive='apiname=$(kubectl get po | grep api- | awk '{print $1}') && kubectl logs -f "$apiname"'" >> ~/.bashrc
+	echo "alias edgelive='edgename=$(kubectl get po | grep edge- | awk '{print $1}') && kubectl logs -f "$edgename" edge'" >> ~/.bashrc
+	echo "alias gatewaylive='apigatewayname=$(kubectl get po | grep apigateway | awk '{print $1}') && kubectl logs -f "$apigatewayname" apigateway'" >> ~/.bashrc
+	echo "alias collatelive='collatename=$(kubectl get po | grep collate- | awk '{print $1}') && kubectl logs -f "$collatename"'" >> ~/.bashrc
+	echo "alias nginxlive='nginxname=$(kubectl get po | grep nginx- | awk '{print $1}') && kubectl logs -f "$nginxname"'" >> ~/.bashrc
+	source ~/.bashrc
+	..moveOnMessage
+}
+
 ##################################################################################
 #### "======================================================================="####
 #### "==                               FLAGS                               =="####
@@ -419,8 +418,12 @@ while test $# -gt 0; do
         pre_Installation
         exit 0
         ;;
+		-lo|--livelogs)
+        deploy_LiveLogs
+        exit 0
+        ;;
 		 -c1|--clean_bt_v1)
-        v1_clean
+        v1_Clean
         exit 0
         ;;
 		-f1|--startfromfresh_bt_v1)
@@ -428,11 +431,11 @@ while test $# -gt 0; do
         exit 0
         ;;
 		 -i1|--install_bt_v1)
-        v1_install
+        v1_Install
         exit 0
         ;;
 		-d1|--dashboard_bt_v1)
-        v1_dashboard
+        v1_Dashboard
         exit 0
         ;;
 		-r1|--rule_engine_v1)
@@ -444,11 +447,15 @@ while test $# -gt 0; do
         exit 0
         ;;
 		-in|--instructions)
-        Deploy_instructions
+        deploy_Instructions
         exit 0
         ;;
 		-f|--forensic)
-        Download_forensics
+        download_Forensics
+        exit 0
+        ;;
+		-o|--openvpn)
+        deploy_OpenVPN
         exit 0
         ;;
     esac
