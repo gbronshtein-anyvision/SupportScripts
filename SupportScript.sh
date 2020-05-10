@@ -40,7 +40,6 @@ function .showhelp
 	}	
 
 
-
 #############################################################################################
 ########################################## METHODS ##########################################
 #############################################################################################
@@ -268,10 +267,6 @@ function z_WebRTCInstructions()
 	.moveOnMessage
 	}
 
-
-
-
-
 ##################################################################################
 #### "======================================================================="####
 #### "==                                RUN                                =="####
@@ -332,7 +327,6 @@ function v1_Dashboard
 		.moveOnMessage
 	}
 
-
 function download_Forensics #version1.2
 	{
 		wget https://s3.eu-central-1.amazonaws.com/anyvision-open-bucket/Berlin_Street.mp4
@@ -353,7 +347,7 @@ function deploy_Instructions { 	z_btrInstructions;	z_mailerInstructions; 	z_WebR
 
 function pre_Installation { deploy_Apps_Install; deploy_Chrome; deploy_TeamViewer; }
 
-function v1_Start_From_Fresh()
+function v1_Start_From_Fresh
 	{
 		#CLEAN SSD
 		rm -rf /ssd/apigateway
@@ -378,21 +372,47 @@ function v1_Start_From_Fresh()
 	}
 
 
-function deploy_LiveLogs()
+function deploy_LiveLogs
 	{
 		echo "======================================================================="
 		echo "==                        Live Logs Alias Line                       =="
 		echo "======================================================================="
 		cd ~
-		echo "alias apilive='apiname=$(kubectl get po | grep api- | awk '{print $1}') && kubectl logs -f "$apiname"'" >> ~/.bashrc
-		echo "alias edgelive='edgename=$(kubectl get po | grep edge- | awk '{print $1}') && kubectl logs -f "$edgename" edge'" >> ~/.bashrc
-		echo "alias gatewaylive='apigatewayname=$(kubectl get po | grep apigateway | awk '{print $1}') && kubectl logs -f "$apigatewayname" apigateway'" >> ~/.bashrc
-		echo "alias collatelive='collatename=$(kubectl get po | grep collate- | awk '{print $1}') && kubectl logs -f "$collatename"'" >> ~/.bashrc
-		echo "alias nginxlive='nginxname=$(kubectl get po | grep nginx- | awk '{print $1}') && kubectl logs -f "$nginxname"'" >> ~/.bashrc
+		
+cat >> ~/.bashrc << 'EOF'
+		api()
+		{ 
+		podname=$(kubectl get po | grep api- | awk '{print $1}') && kubectl logs -f --tail=10 ${podname}
+		} 
+		alias apilive=api
+		
+		gateway()
+		{ 
+		podname=$(kubectl get po | grep apigateway | awk '{print $1}') && kubectl logs -f --tail=10 ${podname} apigateway 
+		} 
+		alias gatewaylive=gateway
+		
+		edge() 
+		{ 
+		podname=$(kubectl get po | grep edge- | awk '{print $1}') && kubectl logs -f --tail=10 ${podname} edge 
+		} 
+		alias edgelive=edge
+		
+		collate() 
+		{ 
+		podname=$(kubectl get po | grep collate- | awk '{print $1}') && kubectl logs -f --tail=10 ${podname} 
+		} 
+		alias collatelive=collate 
+		
+		nginx() 
+		{ 
+		podname=$(kubectl get po | grep nginx- | awk '{print $1}') && kubectl logs -f --tail=10 ${podname} 
+		}
+		alias nginxlive=nginx
+EOF
 		source ~/.bashrc
 		.moveOnMessage
 	}
-
 
 
 
