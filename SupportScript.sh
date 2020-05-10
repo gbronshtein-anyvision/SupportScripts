@@ -382,27 +382,27 @@ function deploy_LiveLogs
 cat >> ~/.bashrc << 'EOF'
 		api()
 		{ 
-		podname=$(kubectl get po | grep api- | awk '{print $1}') && kubectl logs -f --tail=10 ${podname}
+		podname=$(kubectl get po | grep api- | awk '{print $1}') && kubectl logs -f --tail=20 ${podname}
 		} 
 		
 		gateway()
 		{ 
-		podname=$(kubectl get po | grep apigateway | awk '{print $1}') && kubectl logs -f --tail=10 ${podname} apigateway 
+		podname=$(kubectl get po | grep apigateway | awk '{print $1}') && kubectl logs -f --tail=20 ${podname} apigateway 
 		} 
 		
 		edge() 
 		{ 
-		podname=$(kubectl get po | grep edge- | awk '{print $1}') && kubectl logs -f --tail=10 ${podname} edge 
+		podname=$(kubectl get po | grep edge- | awk '{print $1}') && kubectl logs -f --tail=20 ${podname} edge 
 		} 
 		
 		collate() 
 		{ 
-		podname=$(kubectl get po | grep collate- | awk '{print $1}') && kubectl logs -f --tail=10 ${podname} 
+		podname=$(kubectl get po | grep collate- | awk '{print $1}') && kubectl logs -f --tail=20 ${podname} 
 		} 
 		
 		nginx() 
 		{ 
-		podname=$(kubectl get po | grep nginx- | awk '{print $1}') && kubectl logs -f --tail=10 ${podname} 
+		podname=$(kubectl get po | grep nginx- | awk '{print $1}') && kubectl logs -f --tail=20 ${podname} 
 		}
 
 		alias apilive=api
@@ -412,7 +412,15 @@ cat >> ~/.bashrc << 'EOF'
 		alias nginxlive=nginx
 EOF
 		source ~/.bashrc
-		.moveOnMessage
+
+		echo "You now have the ability to run live logs" 
+		echo "Use followin commands:"
+		echo ""
+		echo -e "\e[41mapilive\e[0m"
+   		echo -e "\e[42mgatewaylive\e[0m"
+   		echo -e "\e[43medgelive\e[0m"
+  		echo -e "\e[44mcollatelive\e[0m"
+   		echo -e "\e[45mnginxlive\e[0m"
 	}
 
 
