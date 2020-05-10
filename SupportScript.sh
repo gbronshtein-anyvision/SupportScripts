@@ -412,15 +412,15 @@ cat >> ~/.bashrc << 'EOF'
 		alias nginxlive=nginx
 EOF
 		source ~/.bashrc
-
-		echo "You now have the ability to run live logs" 
-		echo "Use followin commands:"
+		echo ""
+		echo "You have the ability to run live logs now - Use following commands:"
 		echo ""
 		echo -e "\e[41mapilive\e[0m"
    		echo -e "\e[42mgatewaylive\e[0m"
    		echo -e "\e[43medgelive\e[0m"
   		echo -e "\e[44mcollatelive\e[0m"
    		echo -e "\e[45mnginxlive\e[0m"
+		echo ""
 	}
 
 
