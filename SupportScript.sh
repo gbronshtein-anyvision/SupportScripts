@@ -384,30 +384,31 @@ cat >> ~/.bashrc << 'EOF'
 		{ 
 		podname=$(kubectl get po | grep api- | awk '{print $1}') && kubectl logs -f --tail=10 ${podname}
 		} 
-		alias apilive=api
 		
 		gateway()
 		{ 
 		podname=$(kubectl get po | grep apigateway | awk '{print $1}') && kubectl logs -f --tail=10 ${podname} apigateway 
 		} 
-		alias gatewaylive=gateway
 		
 		edge() 
 		{ 
 		podname=$(kubectl get po | grep edge- | awk '{print $1}') && kubectl logs -f --tail=10 ${podname} edge 
 		} 
-		alias edgelive=edge
 		
 		collate() 
 		{ 
 		podname=$(kubectl get po | grep collate- | awk '{print $1}') && kubectl logs -f --tail=10 ${podname} 
 		} 
-		alias collatelive=collate 
 		
 		nginx() 
 		{ 
 		podname=$(kubectl get po | grep nginx- | awk '{print $1}') && kubectl logs -f --tail=10 ${podname} 
 		}
+
+		alias apilive=api
+		alias gatewaylive=gateway
+		alias edgelive=edge
+		alias collatelive=collate 
 		alias nginxlive=nginx
 EOF
 		source ~/.bashrc
