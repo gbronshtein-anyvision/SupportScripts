@@ -269,7 +269,7 @@ function z_WebRTCInstructions()
 
 ##################################################################################
 #### "======================================================================="####
-#### "==                                RUN                                =="####
+#### "==                              RUN                                  =="####
 #### "======================================================================="####
 ##################################################################################
 
@@ -410,11 +410,12 @@ cat >> ~/.bashrc << 'EOF'
 		alias edgelive=edge
 		alias collatelive=collate 
 		alias nginxlive=nginx
-		alias brc='source ~/.bashrc'
+
 EOF
-		brc
+		
 		echo ""
-		echo "You have the ability to run live logs now - Use following commands:"
+		echo "You have the ability to run live logs now"
+		echo "RUN: source ~/.bashrc - and use following commands:"
 		echo ""
 		echo -e "\e[41mapilive\e[0m"
    		echo -e "\e[42mgatewaylive\e[0m"
