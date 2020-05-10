@@ -410,8 +410,9 @@ cat >> ~/.bashrc << 'EOF'
 		alias edgelive=edge
 		alias collatelive=collate 
 		alias nginxlive=nginx
+		alias brc='source ~/.bashrc'
 EOF
-		source ~/.bashrc
+		brc
 		echo ""
 		echo "You have the ability to run live logs now - Use following commands:"
 		echo ""
